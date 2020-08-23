@@ -3,12 +3,67 @@
 @section('content')
 
     @section('jumbo-title')
-        KELAS INFO
+    <br><br>
+    <h5 class="title mt-5" style="transform: scale(0.8)">PHP Laravel Web Development</h5>
     @endsection 
 
     @section('jumbo-content')
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
-         Iusto hic deleniti quod eos sint unde perferendis, ipsam error maiores.
+    
+    <!-- Testimonial 3  -->
+        <!-- ============================================================== -->
+        <div class="testimonial3">
+            <div class="container">
+                <!-- Row  -->
+                <div class="row m-t-40 justify-content-center">
+                    <!-- item -->
+                    <div class="col-xl-3" data-aos="fade-right">
+                        <div class="">
+                            <div class="card-body">
+                                <div class="align-items-center">
+                                    <div>
+                                        <h6 class="m-b-0 customer text-center" style="color: #ffff">PESERTA</h6>
+                                        <br>
+                                        <h6 class="m-b-0 customer text-center" style="color: #2cdd9b"><b>4391</b></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- item -->
+                    <div class="col-xl-3" data-aos="fade-right">
+                        <div class="">
+                            <div class="card-body">
+                                <div class="align-items-center">
+                                    <div>
+                                        <h6 class="m-b-0 customer text-center" style="color: #ffff">JENJANG</h6>
+                                        <br>
+                                        <h6 class="m-b-0 customer text-center" style="color: #2cdd9b"><b>SMA</b></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- item -->
+                    <div class="col-xl-3" data-aos="fade-right">
+                        <div class="">
+                            <div class="card-body">
+                                <div class="align-items-center">
+                                    <div>
+                                        <h6 class="m-b-0 customer text-center" style="color: #ffff">KELAS</h6>
+                                        <br>
+                                        <h6 class="m-b-0 customer text-center" style="color: #2cdd9b"><b>11</b></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Testimonial 3  -->
     @endsection
 
         <!-- Static Slider 3  -->
@@ -18,18 +73,18 @@
                 <!-- Row  -->
                 <div class="row justify-content-center">
                     <!-- Column -->
-                    <div class="col-xl-4 align-self-center text-center" data-aos="fade-right" data-aos-duration="1200">
-                        <h1 class="title">Menjadi peserta kelas ini secara<b class="font-bold d-inline-block">GRATIS</b><span class="text-success-gradiant font-bold typewrite" data-period="2000" data-type='[ "Photoshop", "Web Application", "Web Designing", "Web Development" ]'></span></h1>
+                    <div class="col-xl-5 align-self-center text-center" data-aos="fade-right" data-aos-duration="1200">
+                        <h1 class="title">Menjadi peserta kelas ini secara<b class="font-bold d-inline-block p-1"> GRATIS </b><span class="text-success-gradiant font-bold typewrite" data-period="2000" data-type='[ "Photoshop", "Web Application", "Web Designing", "Web Development" ]'></span></h1>
                         <a class="btn btn-success-gradiant btn-md btn-arrow m-t-20" data-toggle="collapse" href=""><span>Ikuti kelas <i class="ti-arrow-right"></i></span></a>
                     </div>
                     <!-- Column -->
 
                     <!-- Column -->
-                    <div class="col-xl-8 align-self-center ml-auto" data-aos="fade-left" data-aos-duration="1500">
+                    <div class="col-xl-7 align-self-center ml-auto" data-aos="fade-left" data-aos-duration="1500">
                         {{-- <img src="images/static-slider/slider10/img5.jpg" alt="We are Digital Agency" class="img-fluid" /> --}}
                         <!-- 16:9 aspect ratio -->
                         <div class="embed-responsive embed-responsive-16by9">
-                            <video controls class="embed-responsive-item">
+                            <video controls autoplay class="embed-responsive-item">
                                 <source src="videos/1.mp4" type="video/mp4">
                             </video>
                         </div>
@@ -62,13 +117,16 @@
                                                 <hr>
                                                 <br><br>
                                                 <h2 class="title">Tentang kelas</h2>
-                                                <h6 class="subtitle">Belajar dasar-dasar Freelance dan bagaimana untuk memulai menjadi seorang Freelancer yang profesional di mata klien atau orang lain.</h6>
+                                                <br>
+                                                <h6 class="subtitle" style="font-size: medium">
+                                                    Belajar dasar-dasar Freelance dan bagaimana untuk memulai menjadi seorang Freelancer yang profesional di mata klien atau orang lain.</h6>
                                                 <br>
                                             </div>
                                         </div>
                                         
                                         <h2 class="title">Gabung dan Pelajari</h2>
-                                        <h6 class="subtitle">Materi kelas yang akan kita pelajari bersama</h6>
+                                        <br>
+                                        <h6 class="subtitle" style="font-size: medium">Materi kelas yang akan kita pelajari bersama</h6>
                                         <br>
                                         @for ($i = 0; $i < 5; $i++)
                                             <a type="button" class="disabled text-left btn btn-block waves-effect waves-light btn-outline-secondary"> <i class="ti-lock"></i> &nbsp;&nbsp;Jenis Seorang Freelancer</a>
@@ -100,11 +158,11 @@
                     </div>
                     <!-- Column -->
                 </div>        
-            </div>    
+            </div> 
         </div>
         <!-- ============================================================== -->
         <!-- End text  -->
-        
+
         <!-- Testimonial 3  -->
         <!-- ============================================================== -->
         <div class="testimonial3 spacer bg-light">

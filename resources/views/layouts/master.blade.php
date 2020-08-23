@@ -92,10 +92,12 @@
                         <!-- Row  -->
                         <div class="row justify-content-center">
                             <!-- Column -->
+                           
                             <div class="col-lg-8 col-md-6 align-self-center text-center" data-aos="fade-up" data-aos-duration="1200">
-                                <h1 class="title">@yield('jumbo-title')</h1>
-                                <h4 class="subtitle font-light">@yield('jumbo-content')</h4> 
-                                <a href="https://wrappixel.com/templates/wrapkit-lite/" class="btn btn-outline-light m-r-20 btn-md m-t-30 font-14">Download Free</a><a href="https://wrappixel.com/templates/wrapkit/" class="btn btn-md m-t-30 btn-danger-gradiant font-14">Upgrade To Pro</a>
+                                
+                                @yield('jumbo-title')
+                                @yield('jumbo-content')
+                                @yield('jumbo-button')
                             </div>
                             <!-- Column -->
                         </div>

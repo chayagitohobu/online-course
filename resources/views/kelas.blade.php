@@ -3,12 +3,12 @@
 @section('content')
 
     @section('jumbo-title')
-        KELAS
+    <h1 class="title">KELAS</h1>
     @endsection 
 
     @section('jumbo-content')
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
-         Iusto hic deleniti quod eos sint unde perferendis, ipsam error maiores.
+    <h4 class="subtitle font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
+        Iusto hic deleniti quod eos sint unde perferendis, ipsam error maiores.</h4>
     @endsection
 
     <!-- Blog home 2  -->
