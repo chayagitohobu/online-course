@@ -37,3 +37,11 @@ Route::get('/contact', function () {
 Route::get('/kelas', function () {
     return view('kelas');
 });
+
+Route::get('/kelas-info', function () {
+    return view('kelas-info');
+});
+
+Route::get('/test', function () {
+    return view('test');
+});

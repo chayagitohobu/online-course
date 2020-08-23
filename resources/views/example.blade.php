@@ -702,27 +702,27 @@
                         <div class="row m-t-30">
                             <!-- column  -->
                             <div class="col-lg-3 m-b-30">
-                                    <!-- Row -->
-                                    <div class="row no-gutters">
-                                        <div class="col-md-12 pro-pic" style="background:url(images/team/t1.jpg) center center no-repeat / cover">
-                                            <div class="card-img-overlay">
-                                                <ul class="list-inline">    
-                                                    <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>   
-                                                    <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>    
-                                                    <li class="list-inline-item"><a href="#"><i class="fa fa-behance"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="p-t-10">
-                                                <h5 class="title font-medium">Michael Doe</h5>
-                                                <h6 class="subtitle">Property Specialist</h6>
-                                                <p>You can relay on our amazing features list and also our customer services will be great experience.</p>
-                                            </div>
+                                <!-- Row -->
+                                <div class="row no-gutters">
+                                    <div class="col-md-12 pro-pic" style="background:url(images/team/t1.jpg) center center no-repeat / cover">
+                                        <div class="card-img-overlay">
+                                            <ul class="list-inline">    
+                                                <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>   
+                                                <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>    
+                                                <li class="list-inline-item"><a href="#"><i class="fa fa-behance"></i></a></li>
+                                            </ul>
                                         </div>
                                     </div>
-                                    <!-- Row -->
+                                    <div class="col-md-12">
+                                        <div class="p-t-10">
+                                            <h5 class="title font-medium">Michael Doe</h5>
+                                            <h6 class="subtitle">Property Specialist</h6>
+                                            <p>You can relay on our amazing features list and also our customer services will be great experience.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Row -->
                             </div>
                             <!-- column  -->
                             <!-- column  -->
