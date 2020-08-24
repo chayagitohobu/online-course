@@ -12,8 +12,8 @@
     @endsection
 
     @section('jumbo-button')
-    <a href="https://wrappixel.com/templates/wrapkit-lite/" class="btn btn-outline-light m-r-20 btn-md m-t-30 font-14">Download Free</a>
-    <a href="https://wrappixel.com/templates/wrapkit/" class="btn btn-md m-t-30 btn-danger-gradiant font-14">Upgrade To Pro</a>
+    <a href="/kelas" class="btn btn-outline-light m-r-20 btn-md m-t-30 font-14">Lihat kelas</a>
+    <a href="/login" class="btn btn-md m-t-30 btn-success-gradiant font-14">Login</a>
     @endsection
     <!-- ============================================================== -->
     <!-- text  -->

@@ -23,7 +23,7 @@
                                     <div>
                                         <h6 class="m-b-0 customer text-center" style="color: #ffff">PESERTA</h6>
                                         <br>
-                                        <h6 class="m-b-0 customer text-center" style="color: #2cdd9b"><b>4391</b></h6>
+                                        <h6 class="m-b-0 customer text-center" style="color: #ffff"><b>4391</b></h6>
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +38,7 @@
                                     <div>
                                         <h6 class="m-b-0 customer text-center" style="color: #ffff">JENJANG</h6>
                                         <br>
-                                        <h6 class="m-b-0 customer text-center" style="color: #2cdd9b"><b>SMA</b></h6>
+                                        <h6 class="m-b-0 customer text-center" style="color: #ffff"><b>SMA</b></h6>
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +53,7 @@
                                     <div>
                                         <h6 class="m-b-0 customer text-center" style="color: #ffff">KELAS</h6>
                                         <br>
-                                        <h6 class="m-b-0 customer text-center" style="color: #2cdd9b"><b>11</b></h6>
+                                        <h6 class="m-b-0 customer text-center" style="color: #ffff"><b>11</b></h6>
                                     </div>
                                 </div>
                             </div>
@@ -68,13 +68,13 @@
 
         <!-- Static Slider 3  -->
         <!-- ============================================================== -->
-        <div class="static-slider3">
+        <div class="static-slider3 bg-light">
             <div class="container">
                 <!-- Row  -->
                 <div class="row justify-content-center">
                     <!-- Column -->
                     <div class="col-xl-5 align-self-center text-center" data-aos="fade-right" data-aos-duration="1200">
-                        <h1 class="title">Menjadi peserta kelas ini secara<b class="font-bold d-inline-block p-1"> GRATIS </b><span class="text-success-gradiant font-bold typewrite" data-period="2000" data-type='[ "Photoshop", "Web Application", "Web Designing", "Web Development" ]'></span></h1>
+                        <h1 class="title">Menjadi peserta <br> kelas ini dengan harga<br><b class="font-bold d-inline-block p-1"> RP.200.000 </b><span class="text-success-gradiant font-bold typewrite" data-period="2000" data-type='[ "Photoshop", "Web Application", "Web Designing", "Web Development" ]'></span></h1>
                         <a class="btn btn-success-gradiant btn-md btn-arrow m-t-20" data-toggle="collapse" href=""><span>Ikuti kelas <i class="ti-arrow-right"></i></span></a>
                     </div>
                     <!-- Column -->
@@ -103,7 +103,7 @@
                     <div class="col-md-8 text-center">
                         <!-- Feature 2  -->
                         <!-- ============================================================== -->
-                        <div class="bg-light feature20 up">
+                        <div class="feature20 up">
                             <div class="container">
                                 <!-- Row  -->
                                 <div class="row p-5 ">
@@ -115,7 +115,7 @@
                                                 <p class=" d-inline subtitle">Programming /</p>
                                                 @endfor
                                                 <hr>
-                                                <br><br>
+                                                <br>
                                                 <h2 class="title">Tentang kelas</h2>
                                                 <br>
                                                 <h6 class="subtitle" style="font-size: medium">
@@ -127,11 +127,14 @@
                                         <h2 class="title">Gabung dan Pelajari</h2>
                                         <br>
                                         <h6 class="subtitle" style="font-size: medium">Materi kelas yang akan kita pelajari bersama</h6>
+                                        
                                         <br>
                                         @for ($i = 0; $i < 5; $i++)
-                                            <a type="button" class="disabled text-left btn btn-block waves-effect waves-light btn-outline-secondary"> <i class="ti-lock"></i> &nbsp;&nbsp;Jenis Seorang Freelancer</a>
+                                            <a type="button" class="disabled text-left btn btn-block waves-effect waves-light btn-outline-secondary"> <i class="ti-lock"></i> | &nbsp;&nbsp;Jenis Seorang Freelancer</a>
                                         @endfor
-                                    </div>
+                                        <a type="button" class="text-center btn btn-block waves-effect waves-light btn btn-success-gradiant text-white"> <i class="ti-arrow-down"></i></a>                     
+                                        
+                                     </div>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +143,7 @@
 
                     </div>
                     <!-- Column -->
-                    <div class="col-md-4">
+                    <div class="col-md-4 mt-5">
                         <div class="card card-shadow" data-aos="flip-left" data-aos-duration="1200">
                             <a href="#" class="img-ho"><img class="card-img-top" src="images/team/t3.jpg" alt="wrappixel kit" /></a>
                             <div class="card-body">
@@ -149,8 +152,6 @@
                                     <br><br>
                                     <div class="col-xl-4"><span class="label label-inverse">Mentor</span></div>
                                 </div>
-                                
-                                <br>
                                 <p class="m-b-0 font-14 ">Product Designer</p>
                                 
                             </div>
@@ -162,6 +163,7 @@
         </div>
         <!-- ============================================================== -->
         <!-- End text  -->
+
 
         <!-- Testimonial 3  -->
         <!-- ============================================================== -->

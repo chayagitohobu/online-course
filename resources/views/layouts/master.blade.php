@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}"> 
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -11,6 +13,10 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <title>KELAS ONLINE</title>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <!-- Bootstrap Core CSS -->
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- This page CSS -->
@@ -38,7 +44,7 @@
             <div class="header6">
                 <div class="container po-relative">
                     <nav class="navbar navbar-expand-lg h6-nav-bar">
-                        <a href="index.html" class="navbar-brand"><img src="images/logos/white-text.png" alt="wrapkit" /></a>
+                        <a href="/" class="navbar-brand"><img src="images/logos/white-text.png" alt="wrapkit" /></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#h6-info" aria-controls="h6-info" aria-expanded="false" aria-label="Toggle navigation"><span class="ti-menu"></span></button>
                         <div class="collapse navbar-collapse hover-dropdown font-14 ml-auto" id="h6-info">
                             <ul class="navbar-nav ml-auto">
@@ -65,9 +71,40 @@
                                 </li>
                                
                             </ul>
-                            <div class="act-buttons">
+                            {{-- <div class="act-buttons">
                                  <a href="/login" class="btn btn-danger-gradiant font-14">LOGIN</a>
+                            </div> --}}
+
+                            @guest
+                            <div class="nav-item act-buttons">
+                                <a class="nav-link btn btn-success-gradiant font-14" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </div>
+                            {{-- @if (Route::has('register'))
+                                <div class="nav-item act-buttons">
+                                    <a class="nav-link btn btn-danger-gradiant font-14" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </div>
+                            @endif --}}
+                            @else
+                                
+                                <div class="nav-item dropdown act-buttons" style="text-transform:uppercase">
+                                    <a id="navbarDropdown" class="nav-link text-white dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="nav-link text-dark" href="/dashboard">
+                                            DASHBOARD
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </div>
+                            @endguest
                         </div>
                     </nav>
                 </div>
@@ -87,7 +124,7 @@
                 <!-- ============================================================== -->
                 <!-- Static Slider 10  -->
                 <!-- ============================================================== -->
-                <div class="static-slider-head" style="background-image:url(images/landingpage/banner-bg.jpg)">
+                <div class="static-slider-head" style="height:100vh; background-image:url(images/landingpage/banner-bg.jpg); background-attachment: fixed">
                     <div class="container">
                         <!-- Row  -->
                         <div class="row justify-content-center">
