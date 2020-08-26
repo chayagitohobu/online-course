@@ -6,7 +6,7 @@
             <div class="col-xl-2 bg-dark p-5">
                 <div style="height:20vh"></div>
                 <div style="transform: scale(0.8)">
-                   <h3 class="text-white mb-5">Hello, <br> {{ Auth::user()->name }}</h3>
+                   <h1 class="text-white mb-5">Hello, {{ Auth::user()->name }}</h1>
                     <br><br>
                     <hr>
                     <h5 ><a href="dashboard" class="text-white">PROFILE</a> </h5>
@@ -57,53 +57,96 @@
                     </div>
                     <div class="col-xl-9 p-5">
                         <form class="row pr-5">
+                            <br>
+                            <h3 class="title font-bold col-lg-12">PROFILE <hr></h3>
+                            <br><br><br>
+                            <div class="form-group col-lg-4">
+                                <label for="nama">NAMA</label>
+                                <input type="text"   class="form-control" id="nama">
+                            </div>
+                            <div class="form-group col-lg-5">
+                                <label for="profile-pic">FOTO PROFILE</label>
+                                <input type="file" class="form-control" id="profile-pic">
+                            </div>
+                            <div class="form-group col-lg-10">
+                                <label for="Nomor Handphone">DESKRIPSI DIRI</label>
+                                <textarea class="form-control" rows="5"></textarea>
+                            </div>
+                            <h3 class="title font-bold col-lg-12 mt-5">SOSIAL MEDIA <hr></h3>
+                            <div class="form-group col-lg-4">
+                                <label for="facebook">FACEBOOK</label>
+                                <input type="text"   class="form-control" id="facebook">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label for="twitter">TWITTER</label>
+                                <input type="text"   class="form-control" id="twitter">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label for="instagram">INSTAGRAM</label>
+                                <input type="text"   class="form-control" id="instagram">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="youtube">YOUTUBE</label>
+                                <input type="text"   class="form-control" id="youtube">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="linkedin">LINKEDIN</label>
+                                <input type="text"   class="form-control" id="linkedin">
+                            </div>
+                            <br>
+                            <h3 class="title font-bold col-lg-12 mt-5">INFORMASI DIRI <hr></h3>
+                            <br><br><br>
                             <div class="form-group col-lg-6">
                                 <label for="Nomor Handphone">NOMOR HANDPHONE</label>
-                                <input type="text" readonly  class="form-control" id="Nomor Handphone">
+                                <input type="text"   class="form-control" id="Nomor Handphone">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="Alamat">ALAMAT</label>
-                                <input type="text" readonly class="form-control" id="Alamat">
+                                <input type="text"  class="form-control" id="Alamat">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="jenis-kelamin">JENIS KELAMIN</label>
-                                <input type="text" readonly class="form-control" id="jenis-kelamin">
+                                <input type="text"  class="form-control" id="jenis-kelamin">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="pekerjaan">PEKERJAAN</label>
-                                <input type="text" readonly class="form-control" id="pekerjaan">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="pendidikan-terakhir">PENDIDIKAN TERAKHIR</label>
-                                <input type="text" readonly class="form-control" id="pendidikan-terakhir">
+                                <input type="text"  class="form-control" id="pekerjaan">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="tanggal-lahir">TANGGAL LAHIR</label>
-                                <input type="text" readonly class="form-control" id="tanggal-lahir">
+                                <input type="text"  class="form-control" id="tanggal-lahir">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="tempat-lahir">TEMPAT LAHIR</label>
-                                <input type="text" readonly class="form-control" id="tempat-lahir">
+                                <input type="text"  class="form-control" id="tempat-lahir">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="nik">NIK</label>
-                                <input type="text" readonly class="form-control" id="nik">
+                                <input type="text"  class="form-control" id="nik">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="npwp">NPWP</label>
-                                <input type="text" readonly class="form-control" id="npwp">
+                                <input type="text"  class="form-control" id="npwp">
                             </div>
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-5">
+                                <label for="pendidikan-terakhir">PENDIDIKAN TERAKHIR</label>
+                                <input type="text"  class="form-control" id="pendidikan-terakhir">
+                            </div>
+                            <div class="form-group col-lg-4">
                                 <label for="kode-promosi">KODE PROMOSI</label>
-                                <input type="text" readonly class="form-control" id="kode-promosi">
+                                <input type="text"  class="form-control" id="kode-promosi">
                             </div>
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-3">
                                 <label for="kode-affilasi">KODE AFFILASI</label>
-                                <input type="text" readonly class="form-control" id="kode-affilasi">
+                                <input type="text"  class="form-control" id="kode-affilasi">
                             </div>
-                            <div class="form-group col-lg-6 text-center p-4">
-                                <a href="dashboard-user" class="btn btn-success">EDIT PROFILE SAYA</a>
+                            <div class="form-group col-lg-5 text-right p-4">
+                                <a href="dashboard" class="btn btn-success">BATAL</a>
                             </div>
+                            <div class="form-group col-lg-7 text-left p-4">
+                                <button type="submit" class="btn btn-danger-gradiant btn-arrow pr-5 pl-5"><span> SUBMIT <i class="ti-arrow-right"></i></span></button>
+                            </div>
+                            
                         </form>
                     </div>
                 </div>

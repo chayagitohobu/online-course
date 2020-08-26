@@ -34,11 +34,6 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-// Route::get('/kelas', function () {
-//     return view('kelas');
-// });
-
-
 Route::resource('/kelas', 'KelasController');
 
 Route::get('/kelas-info', function () {
@@ -49,6 +44,10 @@ Route::get('/test', function () {
     return view('test');
 });
 
+
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard-user', 'DashboardController@dashboard_user');
+
+Route::resource('user', 'UserController');
