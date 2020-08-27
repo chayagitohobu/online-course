@@ -34,20 +34,16 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::resource('/kelas', 'KelasController');
+Route::get('/kelas', function () {
+    return view('kelas');
+});
 
 Route::get('/kelas-info', function () {
     return view('kelas-info');
 });
 
-Route::get('/test', function () {
-    return view('test');
-});
 
 
 Auth::routes();
 
-Route::get('/dashboard', 'DashboardController@index');
-Route::get('/dashboard-user', 'DashboardController@dashboard_user');
-
-Route::resource('user', 'UserController');
+Route::resource('/user', 'UserController');

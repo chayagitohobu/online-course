@@ -11,21 +11,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ URL::asset('images/favicon.png') }}">
     <title>KELAS ONLINE</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Bootstrap Core CSS -->
-    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ URL::asset('node_modules/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- This page CSS -->
     <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/index-landingpage/landing-page.css" rel="stylesheet">
+    <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/index-landingpage/landing-page.css') }}" rel="stylesheet">
 
     {{-- mi css --}}
-    <link href="css/main.css" rel="stylesheet">
+    <link href="{{ URL::asset('css/main.css') }}" rel="stylesheet">
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,11 +44,11 @@
         <!-- ============================================================== -->
         <!-- Top header  -->
         <!-- ============================================================== -->
-        <div class="topbar" id="top"  style="background-image:url(images/landingpage/banner-bg.jpg);">
+        <div class="topbar" id="top"  style="background-image:url({{ URL::asset('images/landingpage/banner-bg.jpg') }});">
             <div class="header6">
                 <div class="container po-relative">
                     <nav class="navbar navbar-expand-lg h6-nav-bar">
-                        <a href="/" class="navbar-brand"><img src="images/logos/white-text.png" alt="wrapkit" /></a>
+                        <a href="/" class="navbar-brand"><img src="{{ URL::asset('images/logos/white-text.png') }}" alt="wrapkit" /></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#h6-info" aria-controls="h6-info" aria-expanded="false" aria-label="Toggle navigation"><span class="ti-menu"></span></button>
                         <div class="collapse navbar-collapse hover-dropdown font-14 ml-auto" id="h6-info">
                             <ul class="navbar-nav ml-auto">

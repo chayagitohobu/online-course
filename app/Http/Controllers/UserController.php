@@ -2,10 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('user');
     }
 
     /**
@@ -45,7 +57,6 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -56,7 +67,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('user-edit')->with('user', $user);
     }
 
     /**
@@ -68,7 +80,29 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->name = $request->input('name');
+        $user->foto = $request->input('foto');
+        $user->deskripsi_diri = $request->input('deskripsi_diri');
+        $user->facebook = $request->input('facebook');
+        $user->twitter = $request->input('twitter');
+        $user->instagram = $request->input('instagram');
+        $user->youtube = $request->input('youtube');
+        $user->linkedin = $request->input('linkedin');
+        $user->nomor_hp = $request->input('nomor_hp');
+        $user->alamat = $request->input('alamat');
+        $user->jk = $request->input('jk');
+        $user->pekerjaan = $request->input('pekerjaan');
+        $user->tanggal_lahir = $request->input('tanggal_lahir');
+        $user->tempat_lahir = $request->input('tempat_lahir');
+        $user->nik = $request->input('nik');
+        $user->npwp = $request->input('npwp');
+        $user->pendidikan_terakhir = $request->input('pendidikan_terakhir');
+        $user->kode_promosi = $request->input('kode_promosi');
+        $user->kode_affilasi = $request->input('kode_affilasi');
+        $user->save();
+
+        return redirect('/user')->with('success', 'user updated');
     }
 
     /**

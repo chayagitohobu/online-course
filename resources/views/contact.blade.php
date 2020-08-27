@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-
+    
     @section('jumbo-title')
     <h1 class="title">KONTAK</h1>
     @endsection 
