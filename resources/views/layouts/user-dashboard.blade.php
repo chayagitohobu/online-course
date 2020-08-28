@@ -22,11 +22,10 @@
     <!-- This page CSS -->
     <!-- Custom CSS -->
     <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('css/index-landingpage/landing-page.css') }}" rel="stylesheet">
-
+    <link href="{{ URL::asset('css/landing-page.css') }}" rel="stylesheet">
+    
     {{-- mi css --}}
     <link href="{{ URL::asset('css/main.css') }}" rel="stylesheet">
-    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

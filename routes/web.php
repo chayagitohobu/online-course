@@ -27,14 +27,14 @@ Route::get('/', function () {
 });
 
 Route::get('/about', function () {
-    return view('about');
+    return view('static.about');
 });
 
 Route::get('/contact', function () {
-    return view('contact');
+    return view('static.contact');
 });
 
-Route::get('/kelas', function () {
+Route::get('/daftarkelas', function () {
     return view('kelas');
 });
 
@@ -47,3 +47,4 @@ Route::get('/kelas-info', function () {
 Auth::routes();
 
 Route::resource('/user', 'UserController');
+Route::resource('/kelas', 'KelasController');

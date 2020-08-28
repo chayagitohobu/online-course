@@ -15,12 +15,21 @@ class CreateKelasTable extends Migration
     {
         Schema::create('kelas', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->string('gambar');
-            $table->string('video');
-            $table->text('detail_kelas');
-            $table->boolean('berbayar')->default(1);
-            $table->integer('harga');
+            $table->string('nama_kelas');
+            $table->text('deskripsi')->nullable();
+            $table->string('foto')->nullable();
+            $table->string('video')->nullable();
+            $table->enum('jenjang', ['SD', 'SMP', 'SMA', 'UMUM'])->nullable();
+            $table->enum('level', ['PEMULA', 'SEDANG', 'AHLI'])->nullable();
+            $table->enum('tingkat', ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'])->nullable();
+            $table->string('kategori')->nullable();
+            $table->integer('durasi')->nullable();
+            $table->integer('kapasitas')->nullable();
+            $table->enum('berbayar', ['yes', 'no'])->nullable();
+            $table->integer('harga')->nullable();
+            $table->integer('diskon')->nullable();
+            $table->string('slug')->nullable();
+            $table->enum('status', ['yes', 'no'])->nullable();
             $table->timestamps();
         });
     }
