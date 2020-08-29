@@ -6,11 +6,10 @@
             @include('inc.dashboard-nav')
             <div class="col-xl-10 bg-light">
                 <div style="height:20vh"></div>
-
                 <div class="row">
                     <div class="col-xl-3 mt-5 p-3">
                         <div class="card p-1 card-shadow" data-aos="flip-left" data-aos-duration="1200">
-                            <a href="#" class="img-ho"><img class="card-img-top" src="{{ URL::asset('images/user') }}/{{ Auth::user()->foto }}" alt="wrappixel kit" /></a>
+                            <a href="#" class="img-ho"><img class="card-img-top" src="{{ URL::asset('storage/images/user') }}/{{ Auth::user()->foto }}" alt="wrappixel kit" /></a>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-xl-8"><h5 class="font-medium m-b-0 d-inline">{{ Auth::user()->name }}</h5></div>
@@ -40,7 +39,8 @@
                         </div>
                     </div>
                     <div class="col-xl-9 p-5">
-                        {!! Form::open(['action' => ['UserController@update', Auth::user()->id], 'method' => 'POST', 'class' => 'row pr-5']) !!}
+                        @include('inc.messages')
+                        {!! Form::open(['action' => ['UserController@update', Auth::user()->id], 'method' => 'POST', 'enctype' => 'multipart/form-data' , 'class' => 'row pr-5']) !!}
                         {{-- <form class="row pr-5" action="UserController@update"> --}}
                             <br>
                             <h3 class="title font-bold col-lg-12">PROFILE <hr></h3>
@@ -51,7 +51,7 @@
                             </div>
                             <div class="form-group col-lg-5">
                                 <label for="profile-pic">FOTO PROFILE</label>
-                                <input type="text" value="default_user.png" name="foto" class="form-control" id="profile-pic">
+                                <input type="file" value="default_user.png" name="foto" class="form-control" id="profile-pic">
                             </div>
                             <div class="form-group col-lg-10">
                                 <label for="Nomor Handphone">DESKRIPSI DIRI</label>

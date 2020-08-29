@@ -80,9 +80,27 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $this->validate($request, [
+            'foto' => 'image|nullable|max:1999'
+        ]);
+
+        if ($request->hasFile('foto')) {
+            $filenameWithExt = $request->file('foto')->getClientOriginalName();
+
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('foto')->getClientOriginalExtension();
+
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+
+            $path = $request->file('foto')->storeAs('public/images/user', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'user_default.png';
+        }
+
         $user = User::find($id);
         $user->name = $request->input('name');
-        $user->foto = $request->input('foto');
+        $user->foto = $fileNameToStore;
         $user->deskripsi_diri = $request->input('deskripsi_diri');
         $user->facebook = $request->input('facebook');
         $user->twitter = $request->input('twitter');

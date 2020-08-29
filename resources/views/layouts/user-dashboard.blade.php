@@ -192,6 +192,12 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace( 'summary-ckeditor' );
+    </script>
+
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap popper Core JavaScript -->
     <script src="node_modules/popper/dist/popper.min.js"></script>

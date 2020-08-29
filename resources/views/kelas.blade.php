@@ -12,8 +12,8 @@
     @endsection
 
     @section('jumbo-button')
-    <a href="/kelas" class="btn btn-success-gradiant  m-r-20 btn-md m-t-30 font-14">GRATIS</a>
-    <a href="/kelas" class="btn btn-md m-t-30 btn-success-gradiant active font-14">BERBAYAR</a>
+        <a href="/kelas" class="btn btn-success-gradiant  m-r-20 btn-md m-t-30 font-14">GRATIS</a>
+        <a href="/kelas" class="btn btn-md m-t-30 btn-success-gradiant active font-14">BERBAYAR</a>
     @endsection
 
     <!-- Blog home 2  -->
@@ -65,7 +65,6 @@
         </div>    
         <!-- ============================================================== -->
         <!-- End Header 1  -->
-
             <div class="row m-t-40">
                 @for ($i = 0; $i < 6; $i++)
                 <!-- Column -->

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Kelas;
+use App\User;
 
 class KelasController extends Controller
 {
@@ -25,9 +26,10 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $kelas = Kelas::all();
-        // return $kelas;
-        return view('kelas.index')->with('kelas', $kelas);
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        // return $user->kelas;
+        return view('kelas.index')->with('kelas', $user->kelas);
     }
 
     /**
@@ -37,8 +39,15 @@ class KelasController extends Controller
      */
     public function create()
     {
-        $kelas = Kelas::all();
-        return view('kelas.buat_kelas')->with('kelas', $kelas);
+        // return Kelas::where('user_id', '=', auth()->user()->id)->count() > 0;
+
+        if (Kelas::where('user_id', '=', auth()->user()->id)->count() > 0) {
+
+            return redirect('/kelas')->with('danger', 'Anda telah membuat kelas');
+        } else {
+            $kelas = Kelas::all();
+            return view('kelas.buat_kelas')->with('kelas', $kelas);
+        }
     }
 
     /**
@@ -50,10 +59,26 @@ class KelasController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama_kelas' => 'required'
+            'nama_kelas' => 'required',
+            'foto' => 'image|nullable|max:1999'
         ]);
 
+        if ($request->hasFile('foto')) {
+            $filenameWithExt = $request->file('foto')->getClientOriginalName();
+
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('foto')->getClientOriginalExtension();
+
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+
+            $path = $request->file('foto')->storeAs('public/images/kelas', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'default.png';
+        }
+
         $kelas = new Kelas;
+        $kelas->user_id = auth()->user()->id;
+
         $kelas->nama_kelas = $request->input('nama_kelas');
         $kelas->deskripsi = $request->input('deskripsi');
         $kelas->jenjang = $request->input('jenjang');
@@ -64,7 +89,7 @@ class KelasController extends Controller
         $kelas->durasi = $request->input('durasi');
         $kelas->kapasitas = $request->input('kapasitas');
 
-        $kelas->foto = $request->input('foto');
+        $kelas->foto = $fileNameToStore;
         $kelas->video = $request->input('video');
         $kelas->kategori = $request->input('kategori');
         $kelas->berbayar = $request->input('berbayar');
@@ -95,7 +120,8 @@ class KelasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kelas = Kelas::find($id);
+        return view('kelas.edit_kelas')->with('kelas', $kelas);
     }
 
     /**
@@ -107,7 +133,45 @@ class KelasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nama_kelas' => 'required',
+            'foto' => 'image|nullable|max:1999'
+        ]);
+
+        if ($request->hasFile('foto')) {
+            $filenameWithExt = $request->file('foto')->getClientOriginalName();
+
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('foto')->getClientOriginalExtension();
+
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+
+            $path = $request->file('foto')->storeAs('public/images/kelas', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'default.png';
+        }
+
+        $kelas = Kelas::find($id);
+        $kelas->nama_kelas = $request->input('nama_kelas');
+        $kelas->deskripsi = $request->input('deskripsi');
+        $kelas->jenjang = $request->input('jenjang');
+        $kelas->tingkat = $request->input('tingkat');
+        $kelas->level = $request->input('level');
+        $kelas->harga = $request->input('harga');
+        $kelas->diskon = $request->input('diskon');
+        $kelas->durasi = $request->input('durasi');
+        $kelas->kapasitas = $request->input('kapasitas');
+
+        $kelas->foto = $fileNameToStore;
+        $kelas->video = $request->input('video');
+        $kelas->kategori = $request->input('kategori');
+        $kelas->berbayar = $request->input('berbayar');
+        $kelas->status = $request->input('status');
+        $kelas->slug = $request->input('slug');
+
+        $kelas->save();
+
+        return redirect('/kelas')->with('success', 'Kelas telah di edit');
     }
 
     /**
