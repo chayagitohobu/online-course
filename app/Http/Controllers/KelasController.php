@@ -28,7 +28,6 @@ class KelasController extends Controller
     {
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
-        // return $user->kelas;
         return view('kelas.index')->with('kelas', $user->kelas);
     }
 

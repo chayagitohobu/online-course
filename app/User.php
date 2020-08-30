@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Kelas');
     }
+
+    public function materi()
+    {
+        return $this->hasMany('App\Many');
+    }
 }

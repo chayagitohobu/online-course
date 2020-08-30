@@ -4,17 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Kelas extends Model
+class Materi extends Model
 {
-
-
     public function user()
     {
         return $this->belongsTo('App\User');
     }
 
-    public function materi()
+    public function kelas()
     {
-        return $this->hasMany('App\Materi');
+        return $this->belongsTo('App\Kelas');
     }
 }

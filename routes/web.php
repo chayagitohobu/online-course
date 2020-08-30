@@ -48,3 +48,4 @@ Auth::routes();
 
 Route::resource('/user', 'UserController');
 Route::resource('/kelas', 'KelasController');
+Route::resource('/materi', 'MateriController');

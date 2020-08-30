@@ -41,6 +41,7 @@
                     </div>
                     <div class="col-xl-9 p-5">
                         <form class="row pr-5">
+                            @include('inc.messages')
                             <br>
                             <h3 class="title font-bold col-lg-12 mt-5">KONTAK <hr></h3>
                             <br><br><br>

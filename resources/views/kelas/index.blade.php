@@ -46,6 +46,7 @@
                     </div>
                     <div class="col-xl-8 p-5">
                         <form class="row pr-5">
+                            @include('inc.messages')
                             <h3 class="title font-bold col-lg-12 mt-5" style="text-transform: uppercase">{{ $kelas->nama_kelas}} <hr></h3>
                             <hr>
                             <h6 class="m-t-20 p-2">
@@ -81,9 +82,11 @@
                                 <label for="KAPASITAS">KAPASITAS</label>
                                 <input type="text" value="{{ $kelas->kapasitas}} ORANG" name="KAPASITAS" readonly class="form-control" id="KAPASITAS">
                             </div>
-
-                            <div class="form-group col-lg-12 text-center p-4">
-                                <a href="kelas/{{ $kelas->id}}/edit" class="btn btn-success"> EDIT KELAS SAYA </a>
+                            <div class="form-group col-lg-7 text-right p-4">
+                                <a href="materi" class="btn btn-success-gradiant pr-5 pl-5"> MATERI KELAS </a>
+                            </div>
+                            <div class="form-group col-lg-5 text-left p-4">
+                                <a href="kelas/{{ $kelas->id}}/edit" class="btn btn-info-gradiant"> EDIT KELAS</a>
                             </div>
                         </form>
                     </div>

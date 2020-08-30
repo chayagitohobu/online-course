@@ -27,7 +27,7 @@
                                 <br><br><br>
                                 <div class="form-group col-lg-9">
                                     <label for="foto_thumbnail">THUMBNAIL KELAS</label>
-                                    <input type="file" value="default.png" name="foto" class="form-control" id="foto_thumbnail">
+                                    <input type="file" value="{{$kelas->foto}}" name="foto" class="form-control" id="foto_thumbnail">
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <label for="jenjang">JENJANG</label>
