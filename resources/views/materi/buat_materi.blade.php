@@ -25,7 +25,7 @@
                             <hr>
                             <div class="form-group col-lg-12">
                                 <label for="DESKRIPSI MATERI">DESKRIPSI MATERI</label>
-                                <textarea name="deskripsi" class="form-control" id="DESKRIPSI MATERI" cols="30" rows="10"></textarea>
+                                <textarea name="deskripsi" class="form-control" id="summary-ckeditor" cols="40" rows="50"></textarea>
                             </div>
                             <h3 class="title font-bold col-lg-12 mt-5">FOTO, VIDEO, DAN FILE <hr></h3>
                             <br><br><br>
@@ -50,4 +50,11 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace( 'summary-ckeditor' );
+    </script>
 @endsection

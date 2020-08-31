@@ -25,7 +25,7 @@
                             <hr>
                             <div class="form-group col-lg-12">
                                 <label for="DESKRIPSI MATERI">DESKRIPSI MATERI</label>
-                                <textarea name="deskripsi" class="form-control" id="DESKRIPSI MATERI" cols="30" rows="10">
+                                <textarea name="deskripsi" class="form-control" id="summary-ckeditor" cols="30" rows="10">
                                     {{$materi->deskripsi}}
                                 </textarea>
                             </div>
@@ -53,4 +53,11 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace('summary-ckeditor');
+    </script>
 @endsection

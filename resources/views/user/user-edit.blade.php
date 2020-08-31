@@ -12,7 +12,7 @@
                             <a href="#" class="img-ho"><img class="card-img-top" src="{{ URL::asset('storage/images/user') }}/{{ Auth::user()->foto }}" alt="wrappixel kit" /></a>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-xl-8"><h5 class="font-medium m-b-0 d-inline">{{ Auth::user()->name }}</h5></div>
+                                    <div class="col-xl-12 text-center"><h5 class="font-medium m-b-0 d-inline">{{ Auth::user()->name }}</h5></div>
                                     <br><br>
                                 </div>
                                 <p class="m-b-0 font-14 ">{{Auth::user()->deskripsi_diri}}</p>
@@ -57,37 +57,37 @@
                                 <label for="Nomor Handphone">DESKRIPSI DIRI</label>
                                 <textarea name="deskripsi_diri" class="form-control" rows="5">{{Auth::user()->deskripsi_diri}}</textarea>
                             </div>
-                            <h3 class="title font-bold col-lg-12 mt-5">SOSIAL MEDIA <hr></h3>
-                            <div class="form-group col-lg-4">
+                            <h3 class="title font-bold col-lg-12 mt-5">SOSIAL MEDIA URL<hr></h3>
+                            <div class="form-group col-lg-6">
                                 <label for="facebook">FACEBOOK</label>
-                                <input type="text" placeholder="" value="{{Auth::user()->facebook}}" name="facebook" class="form-control" id="facebook">
+                                <input placeholder="https://facebook.com/contoh" type="text" value="{{Auth::user()->facebook}}" name="facebook" class="form-control" id="facebook">
                             </div>
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col-lg-6">
                                 <label for="twitter">TWITTER</label>
-                                <input type="text" value="{{Auth::user()->twitter}}" name="twitter" class="form-control" id="twitter">
+                                <input placeholder="https://twitter.com/contoh" type="text" value="{{Auth::user()->twitter}}" name="twitter" class="form-control" id="twitter">
                             </div>
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col-lg-6">
                                 <label for="instagram">INSTAGRAM</label>
-                                <input type="text" value="{{Auth::user()->instagram}}" name="instagram"   class="form-control" id="instagram">
+                                <input placeholder="https://www.instagram.com/contoh/" type="text" value="{{Auth::user()->instagram}}" name="instagram"   class="form-control" id="instagram">
                             </div>
                             <div class="form-group col-lg-6">
-                                <label for="youtube">YOUTUBE</label>
-                                <input type="text" value="{{Auth::user()->youtube}}" name="youtube"   class="form-control" id="youtube">
+                                <label for="youtube">YOUTUBE CHANNEL</label>
+                                <input placeholder="https://www.youtube.com/c/contoh" type="text" value="{{Auth::user()->youtube}}" name="youtube"   class="form-control" id="youtube">
                             </div>
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-12">
                                 <label for="linkedin">LINKEDIN</label>
-                                <input type="text" value="{{Auth::user()->linkedin}}" name="linkedin" class="form-control" id="linkedin">
+                                <input placeholder="https://www.linkedin.com/in/contoh" type="text" value="{{Auth::user()->linkedin}}" name="linkedin" class="form-control" id="linkedin">
                             </div>
                             <br>
                             <h3 class="title font-bold col-lg-12 mt-5">KONTAK <hr></h3>
                             <br><br><br>
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-5">
                                 <label for="Nomor Handphone">NOMOR HANDPHONE</label>
-                                <input type="text" value="{{Auth::user()->nomor_hp}}" name="nomor_hp" class="form-control" id="Nomor Handphone">
+                                <input placeholder="contoh: 08134567xxxx" type="text" value="{{Auth::user()->nomor_hp}}" name="nomor_hp" class="form-control" id="Nomor Handphone">
                             </div>
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-7">
                                 <label for="Alamat">ALAMAT</label>
-                                <input type="text" value="{{Auth::user()->alamat}}" name="alamat" class="form-control" id="Alamat">
+                                <input placeholder="contoh: Jalan Siliwangi No.27 RT 07 RW 18" type="text" value="{{Auth::user()->alamat}}" name="alamat" class="form-control" id="Alamat">
                             </div>
 
                             <div class="form-group col-lg-6">
@@ -112,11 +112,16 @@
                             
                             <div class="form-group col-lg-6">
                                 <label for="pendidikan-terakhir">PENDIDIKAN TERAKHIR</label>
-                                <input type="text" value="{{Auth::user()->pendidikan_terakhir}}" name="pendidikan_terakhir"  class="form-control" id="pendidikan-terakhir">
+                                <select class="form-control" value="{{Auth::user()->pendidikan_terakhir}}" name="pendidikan_terakhir" id="pendidikan-terakhir">
+                                    <option>SD</option>
+                                    <option>SMP</option>
+                                    <option>SMA</option>
+                                    <option>KULIAH</option>
+                                </select>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="pekerjaan">PEKERJAAN</label>
-                                <input type="text" value="{{Auth::user()->pekerjaan}}" name="pekerjaan"  class="form-control" id="pekerjaan">
+                                <input placeholder="contoh: Guru" type="text" value="{{Auth::user()->pekerjaan}}" name="pekerjaan"  class="form-control" id="pekerjaan">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="tanggal-lahir">TANGGAL LAHIR</label>
@@ -124,15 +129,15 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="tempat-lahir">TEMPAT LAHIR</label>
-                                <input type="text" value="{{Auth::user()->tempat_lahir}}" name="tempat_lahir"  class="form-control" id="tempat-lahir">
+                                <input placeholder="contoh: JAKARTA" type="text" value="{{Auth::user()->tempat_lahir}}" name="tempat_lahir"  class="form-control" id="tempat-lahir">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="nik">NIK</label>
-                                <input type="text" value="{{Auth::user()->nik}}" name="nik"  class="form-control" id="nik">
+                                <input placeholder="contoh: 016797654xxxxxxxx" type="text" value="{{Auth::user()->nik}}" name="nik"  class="form-control" id="nik">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="npwp">NPWP</label>
-                                <input type="text" value="{{Auth::user()->npwp}}" name="npwp"  class="form-control" id="npwp">
+                                <input placeholder="contoh: 12.345.678.9-012.xxx" type="text" value="{{Auth::user()->npwp}}" name="npwp"  class="form-control" id="npwp">
                             </div>
                             <div class="form-group col-lg-5">
                                 <label for="jenis-kelamin">JENIS KELAMIN</label>

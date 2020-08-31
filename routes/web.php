@@ -34,7 +34,7 @@ Route::get('/contact', function () {
     return view('static.contact');
 });
 
-Route::get('/daftarkelas', function () {
+Route::get('/daftar_kelas', function () {
     return view('kelas');
 });
 

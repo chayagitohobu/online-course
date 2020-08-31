@@ -95,7 +95,7 @@ class UserController extends Controller
 
             $path = $request->file('foto')->storeAs('public/images/user', $fileNameToStore);
         } else {
-            $fileNameToStore = 'user_default.png';
+            $fileNameToStore = 'default_user.png';
         }
 
         $user = User::find($id);

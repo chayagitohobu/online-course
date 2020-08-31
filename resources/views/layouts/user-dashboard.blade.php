@@ -63,7 +63,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item"> 
-                                    <a class="nav-link" href="/kelas">
+                                    <a class="nav-link" href="/daftar_kelas">
                                         KELAS
                                     </a>
                                 </li>
@@ -193,10 +193,8 @@
     <!-- All Jquery -->
     <!-- ============================================================== -->
 
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-    <script>
-        CKEDITOR.replace( 'summary-ckeditor' );
-    </script>
+
+    @yield('script')
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap popper Core JavaScript -->

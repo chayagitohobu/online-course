@@ -10,10 +10,10 @@
                 <div class="row">
                     <div class="col-xl-3 mt-5 p-3">
                         <div class="card p-1 card-shadow" data-aos="flip-left" data-aos-duration="1200">
-                            <a href="#" class="img-ho"><img class="card-img-top" src="{{ URL::asset('storage/images/user') }}/{{ Auth::user()->foto }}" alt="wrappixel kit" /></a>
+                            <a href="#" class="img-ho"><img class="card-img-top" src="{{ URL::asset('storage/images/user') }}/{{ Auth::user()->foto }}" alt="Tambahkan foto profile" /></a>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-xl-8"><h5 class="font-medium m-b-0 d-inline">{{ Auth::user()->name }}</h5></div>
+                                    <div class="col-xl-12 text-center"><h5 class="font-medium m-b-0 d-inline">{{ Auth::user()->name }}</h5></div>
                                     <br><br>
                                 </div>
                                 <p class="m-b-0 font-14 ">{{ Auth::user()->deskripsi_diri }}</p>
@@ -29,11 +29,11 @@
                                 <hr>
                                 <div>
                                     <div class="round-social light text-center" style="transform: scale(0.8)">
-                                        <a href="//www.facebook.com/{{Auth::user()->facebook}}" class="link"><i class="fa fa-facebook"></i></a>
-                                        <a href="//www.twitter.com/{{Auth::user()->twitter}}" class="link"><i class="fa fa-twitter"></i></a>
-                                        <a href="//www.linkedin.com/{{Auth::user()->linkedin}}" class="link"><i class="fa fa-linkedin"></i></a>
-                                        <a href="//www.youtube.com/{{Auth::user()->youtube}}" class="link"><i class="fa fa-youtube-play"></i></a>
-                                        <a href="//www.instagram.com/{{Auth::user()->instagram}}" class="link"><i class="fa fa-instagram"></i></a>
+                                        <a href="//www.facebook.com/{{Auth::user()->facebook}}"><i class="fa fa-facebook"></i></a>
+                                        <a href="//www.twitter.com/{{Auth::user()->twitter}}"><i class="fa fa-twitter"></i></a>
+                                        <a href="//www.linkedin.com/{{Auth::user()->linkedin}}"><i class="fa fa-linkedin"></i></a>
+                                        <a href="//www.youtube.com/{{Auth::user()->youtube}}"><i class="fa fa-youtube-play"></i></a>
+                                        <a href="//www.instagram.com/{{Auth::user()->instagram}}"><i class="fa fa-instagram"></i></a>
                                     </div>
                                 </div>
                             </div>

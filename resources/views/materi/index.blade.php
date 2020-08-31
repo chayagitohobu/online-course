@@ -31,27 +31,22 @@
                         <h3 class="title font-bold col-lg-12 mt-5">MATERI KELAS <hr></h3>
                         <br>
                         <a type="button" href="/materi/create" class="text-center mt-2 mb-2 btn btn-block text-white btn-success-gradiant"> TAMBAH MATERI <i class="ti-arrow-down"></i></a>
-                        @if ($materis -> count()>0)
-                            @foreach ($materis as $materi)
-                                <a href="/materi/{{ $materi->id }}" type="button" class="text-left mt-2 mb-2 btn btn-block text-white btn-inverse"> 
-                                    <div class="row">
-                                        <div class="col-xl-1 text-center">
-                                            {{ $materi->urutan }}
-                                        </div>
-                                        <div class="col-xl-1">
-                                            |
-                                        </div>
-                                        <div class="col-xl-10 text-left">
-                                            {{ $materi->judul }}
-                                        </div>
+                        
+                        @foreach ($materis as $materi)
+                            <a href="/materi/{{ $materi->id }}" type="button" class="text-left mt-2 mb-2 btn btn-block text-white btn-inverse"> 
+                                <div class="row">
+                                    <div class="col-xl-1 text-center">
+                                        {{ $materi->urutan }}
                                     </div>
-                                </a>
-                            @endforeach
-                        @else
-                        <h3 class="title font-bold col-lg-12 mt-5">KELAS ANDA BELUM MEMILIKI MATERI <hr></h3>
-                        <br>
-                        <a type="button" href="/materi/create" class="text-center mt-2 mb-2 btn btn-block text-white btn-success-gradiant"> TAMBAH MATERI <i class="ti-arrow-down"></i></a>
-                        @endif
+                                    <div class="col-xl-1">
+                                        |
+                                    </div>
+                                    <div class="col-xl-10 text-left">
+                                        {{ $materi->judul }}
+                                    </div>
+                                </div>
+                            </a>
+                        @endforeach
                     </div>
 
                 </div>

@@ -77,7 +77,7 @@ class MateriController extends Controller
         $materi->kelas_id = $kelas['id'];
         $materi->judul = $request->input('judul');
         $materi->deskripsi = $request->input('deskripsi');
-        $materi->video = $request->input('jenjang');
+        $materi->video = $request->input('video');
         $materi->file = $request->input('file');
         $materi->urutan = $request->input('urutan');
         $materi->foto = $fileNameToStore;
@@ -140,7 +140,7 @@ class MateriController extends Controller
         $materi = Materi::find($id);
         $materi->judul = $request->input('judul');
         $materi->deskripsi = $request->input('deskripsi');
-        $materi->video = $request->input('jenjang');
+        $materi->video = $request->input('video');
         $materi->file = $request->input('file');
         $materi->urutan = $request->input('urutan');
         $materi->foto = $fileNameToStore;
