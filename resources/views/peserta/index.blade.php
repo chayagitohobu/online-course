@@ -7,7 +7,7 @@
             <div class="col-xl-10 bg-light">
                 <div style="height:20vh"></div>
                 <div class="row">
-                    @if (empty($pesetas))
+                    @if (empty($pesertas))
                         <div class="static-slider3">
                             <div class="container">
                                 <div style="height:15vh"></div>
@@ -23,26 +23,25 @@
                             </div>
                         </div> 
                     @else
-                        @foreach ($kelases as $kelas)
-                            <div class="col-md-4">
-                                <div class="card" data-aos="flip-left" data-aos-duration="1200">
-                                    <a href="lihatkelas/{{$kelas->id}}"><img class="card-img-top" src="{{ URL::asset('storage/images/kelas') }}/{{ $kelas->foto }}" alt="wrappixel kit"></a>
-                                    <div class="date-pos bg-success-gradiant">RP.<span>{{$kelas->harga}}</span></div>
-                                    <h5 class="font-medium m-t-30">{{$kelas->nama_kelas}}</h5>
-                                    <h6 class="m-t-20">
-                                        <div class="row">
-                                            <div class="col-md-5">
-                                                RP. {{ $kelas->harga}}
-                                            </div>
-                                            <div class="col-md-7">
-                                            {{ $kelas->jenjang}} / {{ $kelas->tingkat}}
-                                            {{-- {{ $kelas->jenjang}} / {{ $kelas->level}} --}}
-                                            </div>
+                        @foreach ($pesertas as $peserta)
+                        <div class="col-xl-4">
+                            <div style="height:15vh"></div>
+                            <div class="card p-4" data-aos="flip-left" data-aos-duration="1200">
+                                <a href="/peserta/{{$peserta->id}}"><img class="card-img-top" src="{{ URL::asset('storage/kelas') }}/{{ $peserta->foto }}" alt="wrappixel kit"></a>
+                                <h5 class="font-medium m-t-30">{{ $peserta->nama_kelas}}</h5>
+                                <h6 class="m-t-20">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            RP. {{ $peserta->harga}}
                                         </div>
-                                    </h6>    
-                                    <a data-toggle="collapse" href="lihatkelas/{{$kelas->id}}" class="linking text-themecolor m-t-10">Learn More <i class="ti-arrow-right"></i></a>
-                                </div>
+                                        <div class="col-md-7">
+                                           {{ $peserta->jenjang}} / {{ $peserta->tingkat}}
+                                        </div>
+                                    </div>
+                                </h6>
+                                <a data-toggle="collapse" href="#" class="linking text-themecolor m-t-10">Lihat Kelas <i class="ti-arrow-right"></i></a>
                             </div>
+                        </div>
                         @endforeach
                     @endif
                 </div>

@@ -41,10 +41,10 @@ class LihatKelasController extends Controller
     public function store(Request $request)
     {
         $peserta = new Peserta;
-        $peserta->user_id = $request->input('user_id');
+        $peserta->user_id = auth()->user()->id;
         $peserta->kelas_id = $request->input('kelas_id');
         $peserta->save();
-        return redirect('/lihatkelas')->with('success', 'Anda telah mengambil kelas');
+        return redirect('/peserta')->with('success', 'Anda telah mengambil kelas');
     }
 
     /**

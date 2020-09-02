@@ -1,0 +1,66 @@
+@extends('layouts.user-dashboard')
+
+@section('content')
+    <div class="container-fluid">
+        <div class="row">
+            @include('inc.dashboard-nav')
+            <div class="col-xl-10 bg-light">
+                <div style="height:20vh"></div>
+                <div class="row">
+                    <div style="height:20vh"></div>
+                    @foreach ($pesertas as $peserta)
+                    <div class="col-xl-4">
+                        <div style="height:15vh"></div>
+                        <div class="card p-4" data-aos="flip-left" data-aos-duration="1200">
+                            <a href="/kelas-info"><img class="card-img-top" src="{{ URL::asset('storage/kelas') }}/{{ $peserta->foto }}" alt="wrappixel kit"></a>
+                            <h5 class="font-medium m-t-30">{{ $peserta->nama_kelas}}</h5>
+                            <h6 class="m-t-20">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        RP. {{ $peserta->harga}}
+                                    </div>
+                                    <div class="col-md-7">
+                                       {{ $peserta->jenjang}} / {{ $peserta->tingkat}}
+                                       {{-- {{ $peserta->jenjang}} / {{ $peserta->level}} --}}
+                                    </div>
+                                </div>
+                            </h6>
+                            <a data-toggle="collapse" href="#" class="linking text-themecolor m-t-10">Lihat Kelas <i class="ti-arrow-right"></i></a>
+                        </div>
+                    </div>
+                   
+                    
+                    <div class="col-xl-8 p-5">
+                        <form class="row pr-5">
+                            @include('inc.messages')
+                            @if (empty($peserta->testimoni) || empty($peserta->rating))
+                                <!-- Column -->
+                                <div style="height:50vh"></div>
+                                <div class="col-md-12 align-self-center text-center" data-aos="fade-right" data-aos-duration="1200">
+                                    <h4 class="title">Kamu belum memberikan <br> <b class="font-bold">Rating dan Testimoni</b> kamu terhadap kelas ini <span class="text-success-gradiant font-bold typewrite"></span>
+                                    </h4>
+                                    <a class="btn btn-success-gradiant btn-arrow m-t-20 pr-5 pl-5" href="/peserta/{{$peserta->id}}/edit"><span> BERI RATING DAN TESTIMONI <i class="ti-arrow-right"></i></span></a>
+                                </div>
+                                <!-- Column -->
+                            @else
+                                <h3 class="title font-bold col-lg-12 mt-5"> FEEDBACK ANDA <hr></h3>
+                                <br><br><br>
+                                <div class="form-group col-lg-4">
+                                    <label for="RATING">RATING</label>
+                                    <input type="text" value="{{ $peserta->rating}}" name="RATING" readonly class="form-control" id="RATING">
+                                </div>
+                                <div class="form-group col-lg-12 mt-5">
+                                    <label for="TINGKAT">TESTIMONI</label>
+                                    <h6 class="p-2">{{ $peserta->testimoni}}</h6>
+                                    <a class="btn btn-success-gradiant btn-arrow m-t-20 pr-5 pl-5" href="/peserta/{{$peserta->id}}/edit"><span> EDIT RATING DAN TESTIMONI <i class="ti-arrow-right"></i></span></a>
+                                </div>
+                                
+                            @endif
+                        </form>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

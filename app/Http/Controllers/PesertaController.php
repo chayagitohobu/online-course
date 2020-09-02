@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Peserta;
 use App\User;
 use App\Kelas;
+use Illuminate\Support\Facades\DB;
 
 class PesertaController extends Controller
 {
@@ -28,19 +29,14 @@ class PesertaController extends Controller
     public function index()
     {
         $user_id = auth()->user()->id;
-        $pesertas = Peserta::where('user_id', $user_id)->get(); // Ambil semua perserta dengan user id sekian
-        // Ambil data kelas dari semua peserta yang telah diambil
-        // pesertas punya kelas_id
-        // ambil kelas dengan peserta[kelas_id];                                                                            
-        // return Kelas::wherein('id', $pesertas['kelas_id'])->get();
-        // return $pesertas['kelas_id'];
-        foreach ($pesertas as $peserta) {
-            return $peserta['kelas_id'];
-        }
-        // return $pesertas['kelas_id'];
-        // return Kelas::where('id', $pesertas['kelas_id'])->get();
-        // return view('peserta.index')->with('pesertas', $pesertas);
-        // return view('peserta.index');
+
+        $pesertas = DB::table('kelas')
+            ->join('pesertas', 'kelas.id', 'pesertas.kelas_id')
+            ->where('pesertas.user_id', $user_id)
+            ->get();
+        // echo "<pre>";
+        // print_r($pesertas);
+        return view('peserta.index')->with('pesertas', $pesertas);
     }
 
     /**
@@ -70,7 +66,15 @@ class PesertaController extends Controller
      */
     public function show($id)
     {
-        //
+        // $user_id = auth()->user()->id;
+        // $peserta = Peserta::find($id);
+        $pesertas = DB::table('kelas')
+            ->join('pesertas', 'kelas.id', 'pesertas.kelas_id')
+            ->where('pesertas.id', $id)
+            ->get();
+        // echo "<pre>";
+        // print_r($pesertas);
+        return view('peserta.peserta_info')->with('pesertas', $pesertas);
     }
 
     /**
@@ -81,7 +85,8 @@ class PesertaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $peserta = Peserta::find($id);
+        return view('peserta.edit_peserta')->with('peserta', $peserta);
     }
 
     /**
@@ -93,7 +98,11 @@ class PesertaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $peserta = Peserta::find($id);
+        $peserta->rating = $request->input('rating');
+        $peserta->testimoni = $request->input('testimoni');
+        $peserta->save();
+        return redirect()->to('peserta/' . $id)->with('success', 'Anda telah memberikan feedback terhadap kelas ini');
     }
 
     /**

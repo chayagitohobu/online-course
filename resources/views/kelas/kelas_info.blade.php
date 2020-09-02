@@ -76,7 +76,6 @@
                     <div class="col-xl-5 align-self-center text-center" data-aos="fade-right" data-aos-duration="1200">
                         <h1 class="title">Menjadi peserta <br> kelas ini dengan harga<br><b class="font-bold d-inline-block p-1"> RP. {{$kelas->harga}} </b><span class="text-success-gradiant font-bold typewrite" data-period="2000" data-type='[ "Photoshop", "Web Application", "Web Designing", "Web Development" ]'></span></h1>
                         {!! Form::open(['action'=>'LihatKelasController@store', 'method' => 'POST']) !!}
-                            <input type="hidden" value="{{$user->id}}" name="user_id">
                             <input type="hidden" value="{{$kelas->id}}" name="kelas_id">
                             <button type="submit" class="btn btn-success"> GABUNG KELAS </button>
                             {{-- <a type="submit" class="btn btn-success-gradiant btn-md btn-arrow m-t-20 text-white"><span>Ikuti kelas <i class="ti-arrow-right"></i></span></a> --}}
