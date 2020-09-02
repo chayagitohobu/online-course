@@ -49,3 +49,5 @@ Auth::routes();
 Route::resource('/user', 'UserController');
 Route::resource('/kelas', 'KelasController');
 Route::resource('/materi', 'MateriController');
+Route::resource('/peserta', 'PesertaController');
+Route::resource('/lihatkelas', 'LihatKelasController');

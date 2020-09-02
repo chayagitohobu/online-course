@@ -93,7 +93,7 @@ class UserController extends Controller
 
             $fileNameToStore = $filename . '_' . time() . '.' . $extension;
 
-            $path = $request->file('foto')->storeAs('public/images/user', $fileNameToStore);
+            $path = $request->file('foto')->storeAs('public/user', $fileNameToStore);
         } else {
             $fileNameToStore = 'default_user.png';
         }

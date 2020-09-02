@@ -28,7 +28,7 @@ class MateriController extends Controller
     {
         $user_id = auth()->user()->id;
         $kelas = Kelas::where('user_id', $user_id)->first();
-        $materis = Materi::where('kelas_id', $kelas['id'])->get();
+        $materis = Materi::where('kelas_id', $kelas['id'])->orderBy('urutan', 'asc')->get();
 
         return view('materi.index')->with('kelas', $kelas)->with('materis', $materis);
     }
@@ -65,7 +65,7 @@ class MateriController extends Controller
 
             $fileNameToStore = $filename . '_' . time() . '.' . $extension;
 
-            $path = $request->file('foto')->storeAs('public/images/materi', $fileNameToStore);
+            $path = $request->file('foto')->storeAs('public/materi', $fileNameToStore);
         } else {
             $fileNameToStore = 'default.png';
         }
@@ -132,7 +132,7 @@ class MateriController extends Controller
 
             $fileNameToStore = $filename . '_' . time() . '.' . $extension;
 
-            $path = $request->file('foto')->storeAs('public/images/materi', $fileNameToStore);
+            $path = $request->file('foto')->storeAs('public/materi', $fileNameToStore);
         } else {
             $fileNameToStore = 'default.png';
         }

@@ -12,7 +12,7 @@
                             @include('inc.messages')
                             {{-- <form class="row pr-5" action="MateriController@store" method="POST"> --}}
                             {!! Form::open(['action'=>['MateriController@update', $materi->id], 'method' => 'POST','enctype' => 'multipart/form-data' , 'class'=> 'row pr-5']) !!}
-                            <h3 class="title font-bold col-lg-12 mt-5">BUAT MATERI <hr></h3>
+                            <h3 class="title font-bold col-lg-12 mt-5">EDIT MATERI <hr></h3>
                             <br><br><br>
                             <div class="form-group col-lg-8">
                                 <label for="JUDUL MATERI">JUDUL MATERI</label>

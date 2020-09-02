@@ -63,7 +63,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item"> 
-                                    <a class="nav-link" href="/daftar_kelas">
+                                    <a class="nav-link" href="/lihatkelas">
                                         KELAS
                                     </a>
                                 </li>

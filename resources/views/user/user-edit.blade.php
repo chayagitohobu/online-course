@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-xl-3 mt-5 p-3">
                         <div class="card p-1 card-shadow" data-aos="flip-left" data-aos-duration="1200">
-                            <a href="#" class="img-ho"><img class="card-img-top" src="{{ URL::asset('storage/images/user') }}/{{ Auth::user()->foto }}" alt="wrappixel kit" /></a>
+                            <a href="#" class="img-ho"><img class="card-img-top" src="{{ URL::asset('storage/user') }}/{{ Auth::user()->foto }}" alt="wrappixel kit" /></a>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-xl-12 text-center"><h5 class="font-medium m-b-0 d-inline">{{ Auth::user()->name }}</h5></div>

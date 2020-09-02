@@ -70,7 +70,7 @@ class KelasController extends Controller
 
             $fileNameToStore = $filename . '_' . time() . '.' . $extension;
 
-            $path = $request->file('foto')->storeAs('public/images/kelas', $fileNameToStore);
+            $path = $request->file('foto')->storeAs('public/kelas', $fileNameToStore);
         } else {
             $fileNameToStore = 'default.png';
         }
@@ -145,7 +145,7 @@ class KelasController extends Controller
 
             $fileNameToStore = $filename . '_' . time() . '.' . $extension;
 
-            $path = $request->file('foto')->storeAs('public/images/kelas', $fileNameToStore);
+            $path = $request->file('foto')->storeAs('public/kelas', $fileNameToStore);
         } else {
             $fileNameToStore = 'default.png';
         }

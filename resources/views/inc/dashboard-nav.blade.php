@@ -6,7 +6,7 @@
         <hr>
         <h5 ><a href="/user" class="text-white">PROFILE</a> </h5>
         <hr>
-        <h5 ><a href="/dashboard-peserta" class="text-white">KELAS YANG SAYA AMBIL</a></h5>
+        <h5 ><a href="/peserta" class="text-white">KELAS YANG SAYA AMBIL</a></h5>
         <div style="height:10vh"></div>
         <hr>
         <h5><a href="/kelas" class="text-white">KELAS SAYA</a></h5>
