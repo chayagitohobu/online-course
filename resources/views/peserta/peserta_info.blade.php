@@ -12,7 +12,7 @@
                     <div class="col-xl-4">
                         <div style="height:15vh"></div>
                         <div class="card p-4" data-aos="flip-left" data-aos-duration="1200">
-                            <a href="/kelas-info"><img class="card-img-top" src="{{ URL::asset('storage/kelas') }}/{{ $peserta->foto }}" alt="wrappixel kit"></a>
+                            <a href="{{route('tampilmateri',['kelas_id' => $peserta->kelas_id, 'materi_id' => 1])}}"><img class="card-img-top" src="{{ URL::asset('storage/kelas') }}/{{ $peserta->foto }}" alt="wrappixel kit"></a>
                             <h5 class="font-medium m-t-30">{{ $peserta->nama_kelas}}</h5>
                             <h6 class="m-t-20">
                                 <div class="row">
@@ -25,11 +25,11 @@
                                     </div>
                                 </div>
                             </h6>
-                            <a data-toggle="collapse" href="#" class="linking text-themecolor m-t-10">Lihat Kelas <i class="ti-arrow-right"></i></a>
+                            <a class="btn btn-success-gradiant btn-arrow m-t-20 pr-5 pl-5" href="{{route('tampilmateri',['kelas_id' => $peserta->kelas_id, 'materi_id' => 1])}}"><span> MASUK KELAS <i class="ti-arrow-right"></i></span></a>
+                            {{-- <a data-toggle="collapse" href="{{route('tampilmateri',['kelas_id' => $peserta->kelas_id, 'materi_id' => 1])}}" class="linking text-themecolor m-t-10">MASUK KELAS <i class="ti-arrow-right"></i></a> --}}
                         </div>
                     </div>
                    
-                    
                     <div class="col-xl-8 p-5">
                         <form class="row pr-5">
                             @include('inc.messages')
@@ -39,7 +39,7 @@
                                 <div class="col-md-12 align-self-center text-center" data-aos="fade-right" data-aos-duration="1200">
                                     <h4 class="title">Kamu belum memberikan <br> <b class="font-bold">Rating dan Testimoni</b> kamu terhadap kelas ini <span class="text-success-gradiant font-bold typewrite"></span>
                                     </h4>
-                                    <a class="btn btn-success-gradiant btn-arrow m-t-20 pr-5 pl-5" href="/peserta/{{$peserta->id}}/edit"><span> BERI RATING DAN TESTIMONI <i class="ti-arrow-right"></i></span></a>
+                                    <a class="btn btn-info-gradiant btn-arrow m-t-20 pr-5 pl-5" href="/peserta/{{$peserta->id}}/edit"><span> BERI RATING DAN TESTIMONI <i class="ti-arrow-right"></i></span></a>
                                 </div>
                                 <!-- Column -->
                             @else
@@ -52,7 +52,7 @@
                                 <div class="form-group col-lg-12 mt-5">
                                     <label for="TINGKAT">TESTIMONI</label>
                                     <h6 class="p-2">{{ $peserta->testimoni}}</h6>
-                                    <a class="btn btn-success-gradiant btn-arrow m-t-20 pr-5 pl-5" href="/peserta/{{$peserta->id}}/edit"><span> EDIT RATING DAN TESTIMONI <i class="ti-arrow-right"></i></span></a>
+                                    <a class="btn btn-info-gradiant btn-arrow m-t-20 pr-5 pl-5" href="/peserta/{{$peserta->id}}/edit"><span> EDIT RATING DAN TESTIMONI <i class="ti-arrow-right"></i></span></a>
                                 </div>
                                 
                             @endif

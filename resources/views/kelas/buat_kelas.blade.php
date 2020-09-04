@@ -31,11 +31,11 @@
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <label for="jenjang">JENJANG</label>
-                                    <select class="form-control" value="UMUM" name="jenjang" id="jenjang">
-                                        <option>UMUM</option>
+                                    <select class="form-control" value="SD" name="jenjang" id="jenjang">
                                         <option>SD</option>
                                         <option>SMP</option>
                                         <option>SMA</option>
+                                        <option>UMUM</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-lg-4">
@@ -47,17 +47,12 @@
                                         <option>4</option>
                                         <option>5</option>
                                         <option>6</option>
-                                        <option>7</option>
-                                        <option>8</option>
-                                        <option>9</option>
-                                        <option>10</option>
-                                        <option>11</option>
-                                        <option>12</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <label for="level">LEVEL</label>
                                     <select class="form-control" value="PEMULA" name="level" id="level">
+                                        <option> - </option>
                                         <option>PEMULA</option>
                                         <option>SEDANG</option>
                                         <option>AHLI</option>
@@ -99,6 +94,61 @@
 
 
 @section('script')
+    <script type="text/javascript">
+
+        // window.onload = function() {
+        //     if (window.jQuery) {  
+        //         // jQuery is loaded  
+        //         alert("Yeah!");
+        //     } else {
+        //         // jQuery is not loaded
+        //         alert("Doesn't Work");
+        //     }
+        // }
+
+        jQuery(document).ready(function(){
+
+            jQuery('select[name= "jenjang"]').on('change', function(){
+                var jenjang = jQuery(this).val();
+                
+                if(jenjang == 'UMUM'){
+                    $('select[name = "tingkat"]').empty();
+                    $('select[name = "tingkat"]').hide();
+                }
+                
+                if(jenjang == 'SD'){
+
+                    $('select[name = "tingkat"]').empty();
+                    $('select[name = "tingkat"]').show();
+                    $('select[name = "tingkat"]').append(
+                    "<option>1</option>"
+                    +"<option>2</option>"
+                    +"<option>3</option>"
+                    +"<option>4</option>"
+                    +"<option>5</option>"
+                    +"<option>6</option>"
+                    );
+                }
+
+                if(jenjang == 'SMP'){
+
+                    $('select[name = "tingkat"]').empty();
+                    $('select[name = "tingkat"]').show();
+                    $('select[name = "tingkat"]').append("<option>7</option>"+"<option>8</option>"+"<option>9</option>");
+                }
+                
+                if(jenjang == 'SMA'){
+                    $('select[name = "tingkat"]').empty();
+                    $('select[name = "tingkat"]').show();
+                    $('select[name = "tingkat"]').append("<option>10</option>"+"<option>11</option>"+"<option>12</option>");
+                }
+
+            })
+
+        });
+
+    </script>
+
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <script>
         CKEDITOR.replace( 'summary-ckeditor' );

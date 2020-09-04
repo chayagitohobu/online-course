@@ -99,7 +99,7 @@
                                         </div>
                                     </div>
                                 </h6>    
-                                <a data-toggle="collapse" href="lihatkelas/{{$kelas->id}}" class="linking text-themecolor m-t-10">Learn More <i class="ti-arrow-right"></i></a>
+                                <a data-toggle="collapse" href="lihatkelas/{{$kelas->id}}" class="linking text-themecolor m-t-10">Lihat kelas <i class="ti-arrow-right"></i></a>
                             </div>
                         </div>
                     @endforeach

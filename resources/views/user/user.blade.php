@@ -56,19 +56,19 @@
 
                             <div class="form-group col-lg-6">
                                 <label for="provinsi">Provinsi</label>
-                                <input type="text" readonly class="form-control" id="provinsi" placeholder="">
+                                <input type="text" readonly value="{{$province->name}}" class="form-control" id="provinsi" placeholder="">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="kota/kabupaten">Kota/Kabupaten</label>
-                                <input type="text" readonly class="form-control" id="kota/kabupaten" placeholder="">
+                                <input type="text" readonly value="{{$regency->name}}" class="form-control" id="kota/kabupaten" placeholder="">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="kecamatan">Kecamatan</label>
-                                <input type="text" readonly class="form-control" id="kecamatan" placeholder="">
+                                <input type="text" readonly value="{{$district->name}}" class="form-control" id="kecamatan" placeholder="">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="Kelurahan">Kelurahan</label>
-                                <input type="text" readonly class="form-control" id="Kelurahan" placeholder="">
+                                <input type="text" readonly value="{{$village->name}}" class="form-control" id="Kelurahan" placeholder="">
                             </div>
                             <br>
                             <h3 class="title font-bold col-lg-12 mt-5">INFORMASI DIRI <hr></h3>

@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use App\Models\Province;
+use App\Models\Regency;
+use App\Models\District;
+use App\Models\Village;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -25,7 +30,40 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.user');
+        $user_id = auth()->user()->id;
+        $user = DB::table('users')
+            ->where('users.id', '=', $user_id)
+            ->get();
+
+        $province_id = DB::table('users')
+            ->where('users.id', '=', $user_id)
+            ->pluck('province_id')->first();
+
+        $regency_id = DB::table('users')
+            ->where('users.id', '=', $user_id)
+            ->pluck('regency_id')->first();
+
+        $district_id = DB::table('users')
+            ->where('users.id', '=', $user_id)
+            ->pluck('district_id')->first();
+
+        $village_id = DB::table('users')
+            ->where('users.id', '=', $user_id)
+            ->pluck('village_id')->first();
+
+        $province = Province::where('indoregion_provinces.id', '=', $province_id)->firstOrFail();
+        $regency = Regency::where('indoregion_regencies.id', '=', $regency_id)->firstOrFail();
+        $district = District::where('indoregion_districts.id', '=', $district_id)->firstOrFail();
+        $village = Village::where('indoregion_villages.id', '=', $village_id)->firstOrFail();
+
+
+        // return $district;
+
+        return view('user.user')
+            ->with('province', $province)
+            ->with('regency', $regency)
+            ->with('district', $district)
+            ->with('village', $village);
     }
 
     /**
@@ -67,8 +105,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $provinces = Province::all();
         $user = User::find($id);
-        return view('user.user-edit')->with('user', $user);
+        return view('user.user-edit')->with('user', $user)->with('provinces', $provinces);
     }
 
     /**
@@ -118,6 +157,12 @@ class UserController extends Controller
         $user->pendidikan_terakhir = $request->input('pendidikan_terakhir');
         $user->kode_promosi = $request->input('kode_promosi');
         $user->kode_affilasi = $request->input('kode_affilasi');
+
+        $user->province_id = $request->input('provinsi');
+        $user->regency_id = $request->input('kota_kabupaten');
+        $user->district_id = $request->input('kecamatan');
+        $user->village_id = $request->input('kelurahan');
+
         $user->save();
 
         return redirect('/user')->with('success', 'user updated');
@@ -132,5 +177,26 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getKota_Kabupaten($id)
+    {
+        // $regencies = $province->regencies;
+        $kota_kabupaten = Regency::where('province_id', $id)->pluck("name", "id");
+        return json_encode($kota_kabupaten);
+    }
+
+    public function getKecamatan($id)
+    {
+        // $regencies = $province->regencies;
+        $kecamatan = District::where('regency_id', $id)->pluck("name", "id");
+        return json_encode($kecamatan);
+    }
+
+    public function getKelurahan($id)
+    {
+        // $regencies = $province->regencies;
+        $kelurahan = Village::where('district_id', $id)->pluck("name", "id");
+        return json_encode($kelurahan);
     }
 }

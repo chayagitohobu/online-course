@@ -42,6 +42,10 @@ Route::get('/kelas-info', function () {
     return view('kelas-info');
 });
 
+Route::get('/lihatmateri/{kelas_id}/{materi_id}', 'LihatMateriController@tampilmateri')->name('tampilmateri');
+Route::get('/getKota_Kabupaten/{id}', 'UserController@getKota_Kabupaten')->name('getKota_Kabupaten');
+Route::get('/getKecamatan/{id}', 'UserController@getKecamatan')->name('getKecamatan');
+Route::get('/getKelurahan/{id}', 'UserController@getKelurahan')->name('getKelurahan');
 
 
 Auth::routes();
@@ -51,3 +55,4 @@ Route::resource('/kelas', 'KelasController');
 Route::resource('/materi', 'MateriController');
 Route::resource('/peserta', 'PesertaController');
 Route::resource('/lihatkelas', 'LihatKelasController');
+Route::resource('/lihatmateri', 'LihatMateriController');

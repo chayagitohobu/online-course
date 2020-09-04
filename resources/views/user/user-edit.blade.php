@@ -92,19 +92,31 @@
 
                             <div class="form-group col-lg-6">
                                 <label for="provinsi">Provinsi</label>
-                                <input type="text" readonly class="form-control" id="provinsi" placeholder="">
+                                <select type="text" class="form-control" name="provinsi" id="provinsi" placeholder="">
+                                    @foreach ($provinces as $province)
+                                        <option value="{{$province->id}}">{{$province->name}}</option>
+                                    @endforeach
+
+                                </select>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="kota/kabupaten">Kota/Kabupaten</label>
-                                <input type="text" readonly class="form-control" id="kota/kabupaten" placeholder="">
+                                <select type="text" class="form-control" name="kota_kabupaten" id="kota/kabupaten" placeholder="">
+                                
+                                </select>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="kecamatan">Kecamatan</label>
-                                <input type="text" readonly class="form-control" id="kecamatan" placeholder="">
+                                <select type="text" class="form-control" name="kecamatan" id="kecamatan" placeholder="">
+
+
+                                </select>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="Kelurahan">Kelurahan</label>
-                                <input type="text" readonly class="form-control" id="Kelurahan" placeholder="">
+                                <select type="text" class="form-control" name="kelurahan" id="Kelurahan" placeholder="">
+
+                                </select>
                             </div>
                             <br>
                             <h3 class="title font-bold col-lg-12 mt-5">INFORMASI DIRI <hr></h3>
@@ -168,4 +180,86 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    
+<script type="text/javascript">
+
+    // window.onload = function() {
+    //     if (window.jQuery) {  
+    //         // jQuery is loaded  
+    //         alert("Yeah!");
+    //     } else {
+    //         // jQuery is not loaded
+    //         alert("Doesn't Work");
+    //     }
+    // }
+
+    jQuery(document).ready(function(){
+
+        jQuery('select[name="provinsi"]').on('change', function(){
+            var provinsi = jQuery(this).val();
+            
+            if(provinsi){
+               jQuery.ajax({
+                   url: '/getKota_Kabupaten/'+provinsi,
+                   type: 'GET',
+                   dataType: 'json',
+                   success:function(data){
+                       jQuery('select[name="kota_kabupaten"]').empty();
+                       jQuery.each(data, function(key,value){
+                           $('select[name="kota_kabupaten"]').append('<option value="'+ key +'"> '+ value +' </option>');
+                       })
+                   }
+               })
+            }else{
+                $('select[name="kota_kabupaten"]').empty();
+            }
+        })
+
+        jQuery('select[name="kota_kabupaten"]').on('change', function(){
+            var kota_kabupaten = jQuery(this).val();
+            
+            if(kota_kabupaten){
+               jQuery.ajax({
+                   url: '/getKecamatan/'+kota_kabupaten,
+                   type: 'GET',
+                   dataType: 'json',
+                   success:function(data){
+                       jQuery('select[name="kecamatan"]').empty();
+                       jQuery.each(data, function(key,value){
+                           $('select[name="kecamatan"]').append('<option value="'+ key +'"> '+ value +' </option>');
+                       })
+                   }
+               })
+            }else{
+                $('select[name="kecamatan"]').empty();
+            }
+        })
+
+        jQuery('select[name="kecamatan"]').on('change', function(){
+            var kecamatan = jQuery(this).val();
+            
+            if(kecamatan){
+               jQuery.ajax({
+                   url: '/getKelurahan/'+kecamatan,
+                   type: 'GET',
+                   dataType: 'json',
+                   success:function(data){
+                       jQuery('select[name="kelurahan"]').empty();
+                       jQuery.each(data, function(key,value){
+                           $('select[name="kelurahan"]').append('<option value="'+ key +'"> '+ value +' </option>');
+                       })
+                   }
+               })
+            }else{
+                $('select[name="kelurahan"]').empty();
+            }
+        })
+
+    });
+
+</script>
+
 @endsection

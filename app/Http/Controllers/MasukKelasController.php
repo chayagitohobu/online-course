@@ -5,12 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Kelas;
+use App\Peserta;
 use App\Materi;
 use App\User;
-use App\Peserta;
 
-
-class LihatKelasController extends Controller
+class MasukKelasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,16 +18,7 @@ class LihatKelasController extends Controller
      */
     public function index()
     {
-        $kelases = Kelas::All();
-        // $user_id = auth()->user()->id;
-        // $pesertas = DB::table('kelas')
-        //     ->join('peserta', 'kelas.id', 'peserta.kelas_id')
-        //     ->where('pesertas.user_id', '=', $user_id)
-        //     ->get();
-
-        // echo "<pre>";
-        // print_r($pesertas);
-        return view('kelas.kelas')->with('kelases', $kelases);
+        //
     }
 
     /**
@@ -49,11 +39,7 @@ class LihatKelasController extends Controller
      */
     public function store(Request $request)
     {
-        $peserta = new Peserta;
-        $peserta->user_id = auth()->user()->id;
-        $peserta->kelas_id = $request->input('kelas_id');
-        $peserta->save();
-        return redirect('/peserta')->with('success', 'Anda telah mengambil kelas');
+        //
     }
 
     /**
@@ -64,10 +50,6 @@ class LihatKelasController extends Controller
      */
     public function show($id)
     {
-        $kelas = Kelas::find($id);
-        $materis = Materi::where('kelas_id', $id)->get();
-        $user = User::where('id', $kelas['user_id'])->first();
-        return view('kelas.kelas_info')->with('kelas', $kelas)->with('materis', $materis)->with('user', $user);
     }
 
     /**

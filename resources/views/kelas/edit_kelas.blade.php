@@ -99,8 +99,65 @@
 @endsection
 
 @section('script')
+
+    <script type="text/javascript">
+
+        // window.onload = function() {
+        //     if (window.jQuery) {  
+        //         // jQuery is loaded  
+        //         alert("Yeah!");
+        //     } else {
+        //         // jQuery is not loaded
+        //         alert("Doesn't Work");
+        //     }
+        // }
+
+        jQuery(document).ready(function(){
+
+            jQuery('select[name= "jenjang"]').on('change', function(){
+                var jenjang = jQuery(this).val();
+                
+                if(jenjang == 'UMUM'){
+                    $('select[name = "tingkat"]').empty();
+                    $('select[name = "tingkat"]').hide();
+                }
+                
+                if(jenjang == 'SD'){
+
+                    $('select[name = "tingkat"]').empty();
+                    $('select[name = "tingkat"]').show();
+                    $('select[name = "tingkat"]').append(
+                    "<option>1</option>"
+                    +"<option>2</option>"
+                    +"<option>3</option>"
+                    +"<option>4</option>"
+                    +"<option>5</option>"
+                    +"<option>6</option>"
+                    );
+                }
+
+                if(jenjang == 'SMP'){
+
+                    $('select[name = "tingkat"]').empty();
+                    $('select[name = "tingkat"]').show();
+                    $('select[name = "tingkat"]').append("<option>7</option>"+"<option>8</option>"+"<option>9</option>");
+                }
+                
+                if(jenjang == 'SMA'){
+                    $('select[name = "tingkat"]').empty();
+                    $('select[name = "tingkat"]').show();
+                    $('select[name = "tingkat"]').append("<option>10</option>"+"<option>11</option>"+"<option>12</option>");
+                }
+
+            })
+
+        });
+
+    </script>
+
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <script>
         CKEDITOR.replace( 'summary-ckeditor' );
     </script>
 @endsection
+
