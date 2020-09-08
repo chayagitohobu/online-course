@@ -55,20 +55,39 @@
                             </div>
 
                             <div class="form-group col-lg-6">
-                                <label for="provinsi">Provinsi</label>
-                                <input type="text" readonly value="{{$province->name}}" class="form-control" id="provinsi" placeholder="">
+                                <label for="provinsi">PROVINSI</label>
+                                @if (empty($province))
+                                    <input type="text" readonly value="" class="form-control" id="provinsi" placeholder="">
+                                @else
+                                    <input type="text" readonly value="{{$province->name}}" class="form-control" id="provinsi" placeholder="">
+                                @endif
+                                
                             </div>
                             <div class="form-group col-lg-6">
-                                <label for="kota/kabupaten">Kota/Kabupaten</label>
+                                <label for="kota/kabupaten">KOTA/KABUPATEN</label>
+                                @if (empty($regency))
+                                <input type="text" readonly value="" class="form-control" id="kota/kabupaten" placeholder="">
+                                @else
                                 <input type="text" readonly value="{{$regency->name}}" class="form-control" id="kota/kabupaten" placeholder="">
+                                @endif
+                                
                             </div>
                             <div class="form-group col-lg-6">
-                                <label for="kecamatan">Kecamatan</label>
-                                <input type="text" readonly value="{{$district->name}}" class="form-control" id="kecamatan" placeholder="">
+                                <label for="kecamatan">KECAMATAN</label>
+                                @if (empty($district))
+                                    <input type="text" readonly value="" class="form-control" id="kecamatan" placeholder="">
+                                @else
+                                    <input type="text" readonly value="{{$district->name}}" class="form-control" id="kecamatan" placeholder="">
+                                @endif
                             </div>
                             <div class="form-group col-lg-6">
-                                <label for="Kelurahan">Kelurahan</label>
+                                <label for="Kelurahan">KELURAHAN</label>
+                                @if (empty($village))
+                                <input type="text" readonly value="" class="form-control" id="Kelurahan" placeholder="">
+                                @else
                                 <input type="text" readonly value="{{$village->name}}" class="form-control" id="Kelurahan" placeholder="">
+                                @endif
+                                
                             </div>
                             <br>
                             <h3 class="title font-bold col-lg-12 mt-5">INFORMASI DIRI <hr></h3>

@@ -93,6 +93,7 @@
                             <div class="form-group col-lg-6">
                                 <label for="provinsi">Provinsi</label>
                                 <select type="text" class="form-control" name="provinsi" id="provinsi" placeholder="">
+                                    <option value="Pilih.." selected="false">Pilih..</option>
                                     @foreach ($provinces as $province)
                                         <option value="{{$province->id}}">{{$province->name}}</option>
                                     @endforeach

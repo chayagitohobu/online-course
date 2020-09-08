@@ -51,14 +51,12 @@ class UserController extends Controller
             ->where('users.id', '=', $user_id)
             ->pluck('village_id')->first();
 
-        $province = Province::where('indoregion_provinces.id', '=', $province_id)->firstOrFail();
-        $regency = Regency::where('indoregion_regencies.id', '=', $regency_id)->firstOrFail();
-        $district = District::where('indoregion_districts.id', '=', $district_id)->firstOrFail();
-        $village = Village::where('indoregion_villages.id', '=', $village_id)->firstOrFail();
+        $province = Province::where('indoregion_provinces.id', '=', $province_id)->first();
+        $regency = Regency::where('indoregion_regencies.id', '=', $regency_id)->first();
+        $district = District::where('indoregion_districts.id', '=', $district_id)->first();
+        $village = Village::where('indoregion_villages.id', '=', $village_id)->first();
 
-
-        // return $district;
-
+        // return $province;
         return view('user.user')
             ->with('province', $province)
             ->with('regency', $regency)
