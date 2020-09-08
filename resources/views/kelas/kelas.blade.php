@@ -3,6 +3,7 @@
 @section('content')
 
     @section('jumbo-title')
+    
     <h1 class="title">KELAS</h1>
     @endsection 
 

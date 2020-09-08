@@ -1,5 +1,18 @@
 @extends('layouts.user-dashboard')
 
+@section('style')
+    <style>
+        html .note-editor{
+            background: white;
+        }
+
+        html .note-editor .panel-heading .note-btn-group button i,
+        html .note-editor .panel-heading .note-btn-group button span{
+            color: black;
+        }
+    </style>
+@endsection
+
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -21,7 +34,7 @@
                                 <hr>
                                 <div class="form-group col-lg-12">
                                     <label for="DESKRIPSI KELAS">DESKRIPSI KELAS</label>
-                                    <textarea name="deskripsi" class="form-control" id="summary-ckeditor" cols="30" rows="10"></textarea>
+                                    <textarea name="deskripsi" class="form-control" id="summernote" cols="30" rows="10"></textarea>
                                 </div>
                                 <h3 class="title font-bold col-lg-12 mt-5">INFORMASI KELAS <hr></h3>
                                 <br><br><br>
@@ -108,6 +121,7 @@
 
         jQuery(document).ready(function(){
 
+            $('#summernote').summernote();
             jQuery('select[name= "jenjang"]').on('change', function(){
                 var jenjang = jQuery(this).val();
                 
@@ -149,8 +163,8 @@
 
     </script>
 
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-    <script>
-        CKEDITOR.replace( 'summary-ckeditor' );
-    </script>
+
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 @endsection

@@ -1,5 +1,18 @@
 @extends('layouts.user-dashboard')
 
+@section('style')
+    <style>
+        html .note-editor{
+            background: white;
+        }
+
+        html .note-editor .panel-heading .note-btn-group button i,
+        html .note-editor .panel-heading .note-btn-group button span{
+            color: black;
+        }
+    </style>
+@endsection
+
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -8,20 +21,21 @@
                 <div style="height:20vh"></div>
                 <div class="row justify-content-center">
                     <div style="height:20vh"></div>
-                        <div class="col-xl-8 p-5">
+                        <div class="col-xl-10 p-5">
                             @include('inc.messages')
                             {{-- <form class="row pr-5" action="KelasController@store" method="POST"> --}}
                                 {!! Form::open(['action'=> ['KelasController@update', $kelas->id], 'method' => 'POST', 'enctype' => 'multipart/form-data' , 'class'=> 'row pr-5']) !!}
                                 <h3 class="title font-bold col-lg-12 mt-5">EDIT KELAS <hr></h3>
                                 <br><br><br>
-                                <div class="form-group col-lg-8">
+                                <div class="form-group col-lg-5">
                                     <label for="NAMA KELAS">NAMA KELAS</label>
                                 <input type="text" value="{{$kelas->nama_kelas}}" name="nama_kelas" class="form-control" id="NAMA KELAS">
                                 </div>
                                 <hr>
                                 <div class="form-group col-lg-12">
                                     <label for="DESKRIPSI KELAS">DESKRIPSI KELAS</label>
-                                    <textarea name="deskripsi"  class="form-control" id="summary-ckeditor" cols="30" rows="10">{{$kelas->deskripsi}}</textarea>
+                                    <textarea name="deskripsi"  class="form-control" id="summernote" cols="30" rows="10" >
+                                        {{$kelas->deskripsi}}</textarea>
                                 </div>
                                 <h3 class="title font-bold col-lg-12 mt-5">INFORMASI KELAS <hr></h3>
                                 <br><br><br>
@@ -113,6 +127,7 @@
         // }
 
         jQuery(document).ready(function(){
+            $('#summernote').summernote();
 
             jQuery('select[name= "jenjang"]').on('change', function(){
                 var jenjang = jQuery(this).val();
@@ -155,9 +170,13 @@
 
     </script>
 
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    {{-- <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <script>
         CKEDITOR.replace( 'summary-ckeditor' );
-    </script>
+    </script> --}}
+
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 @endsection
 
