@@ -68,13 +68,25 @@ class PesertaController extends Controller
     {
         // $user_id = auth()->user()->id;
         // $peserta = Peserta::find($id);
-        $pesertas = DB::table('kelas')
+        $peserta = DB::table('kelas')
             ->join('pesertas', 'kelas.id', 'pesertas.kelas_id')
             ->where('pesertas.id', $id)
-            ->get();
+            ->first();
+
+        $kelas_id = DB::table('kelas')
+            ->join('pesertas', 'kelas.id', 'pesertas.kelas_id')
+            ->where('pesertas.id', $id)
+            ->first()->kelas_id;
+
+        $user_creator_and_kelas = DB::table('kelas')
+            ->join('users', 'kelas.user_id', 'users.id')
+            ->where('kelas.id', $kelas_id)
+            ->first();
+
+        // return $pesertas;
         // echo "<pre>";
-        // print_r($pesertas);
-        return view('peserta.peserta_info')->with('pesertas', $pesertas);
+        // print_r($user_creator_and_kelas);
+        return view('peserta.peserta_info')->with('peserta', $peserta)->with('kelas', $user_creator_and_kelas);
     }
 
     /**

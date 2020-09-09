@@ -8,7 +8,6 @@
                 <div style="height:20vh"></div>
                 <div class="row">
                     <div style="height:20vh"></div>
-                    @foreach ($pesertas as $peserta)
                     <div class="col-xl-4">
                         <div style="height:15vh"></div>
                         <div class="card p-4" data-aos="flip-left" data-aos-duration="1200">
@@ -57,7 +56,33 @@
                             @endif
                         </form>
                     </div>
-                    @endforeach
+                </div>
+
+                <div class="row p-5">
+                    <div class="col-xl-12 text-left">
+                        <div class="row">
+                            <div class="col-xl-8">
+                                <h2 class="title">Tentang kelas</h2>
+                                <hr>
+                                <br>
+                                <h6 class="subtitle" style="font-size: medium">
+                                    {!! $kelas->deskripsi !!}</h6>
+                                <br>
+                            </div>
+                            <div class="col-xl-4">
+                                <div class="card card-shadow" data-aos="flip-left" data-aos-duration="1200">
+                                    <a  class="img-ho"><img class="card-img-top" src="{{ URL::asset('storage/user') }}/{{$kelas->foto}}" alt="wrappixel kit" /></a>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-xl-8"><h5 class="font-medium m-b-0 d-inline">{{$kelas->name}} &nbsp; &nbsp;</h5></div>
+                                            <hr>
+                                        </div>
+                                        <p class="m-b-0 font-14 ">{{$kelas->pekerjaan}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
                 </div>
             </div>
         </div>
