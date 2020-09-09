@@ -86,57 +86,43 @@
                     <br><br>
                     <span class="label btn-success-gradiant label-rounded text-medium"> MATERI {{$materi->urutan}} </span>
                     <h3 class="title font-bold col-lg-12 mt-5" style="text-transform: uppercase">{{$materi->judul}}<hr></h3>
-                    <h6 class="col-lg-12 mt-5 title text-left">{!! $materi->deskripsi !!}<hr></h6>
-                    <a type="button" href="{{$materi->file}}" class="text-center btn btn-block waves-effect waves-light btn btn-success-gradiant text-white"> DOWNLOAD FILE PELAJARAN <i class="ti-arrow-down"></i></a>
+                    <h6 class="col-lg-12 mt-5 title text-left">{!! $materi->deskripsi !!}</h6>
+                    <br><br>
+                    <div class="text-left">
+                        <a type="button" href="{{$materi->file}}" class="text-center btn btn btn-outline-success" style="font-size: small"> DOWNLOAD FILE PELAJARAN<i class="ti-arrow-down"></i></a><br><br><hr>
+                    </div>
+                    
                     <div style="height:15vh"></div>
+                    
+                    <div class="row justify-content-center">
+                        @if ($materi->urutan != 1)
+                            <div class="col-xl-3">
+                                <a type="button" href="{{route('tampilmateri',['kelas_id' => $materi->kelas_id, 'materi_id' => $materi->urutan - 1])}}" class="text-center btn text-white btn btn-success-gradiant"> <i class="ti-arrow-left"></i> SEBELUMNYA</a>
+                            </div>
+                        @else
+                        <div class="col-xl-3">
+                            
+                        </div>
+                        @endif
+                        
+                        <div class="col-xl-3">
+                            <a type="button" href="" class="text-center btn text-white btn btn-info-gradiant"> SAYA MENGERTI </a>
+                        </div>
+                        <div class="col-xl-3">
+                            <a type="button" href="{{route('tampilmateri',['kelas_id' => $materi->kelas_id, 'materi_id' => $materi->urutan + 1])}}" class="text-center btn text-white btn btn-success-gradiant"> SELANJUTNYA <i class="ti-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
                     @endforeach
+
+                    
                 </div>
             </div>
             
             
         </div>
 
-        <!-- Testimonial 3  -->
-        <!-- ============================================================== -->
-        {{-- <div class="testimonial3 spacer bg-light">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-7 text-center">
-                        <h2 class="title"> Testimonial</h2>
-                        <h6 class="subtitle">Apa kata murid yang telah mengambil course ini ?</h6>
-                    </div>
-                </div>
-                <!-- Row  -->
-                <div class="row testi3 m-t-40">
 
-                    @for ($i = 0; $i < 6; $i++)
-                    <!-- item -->
-                    <div class="col-lg-4 col-md-4" data-aos="fade-right">
-                        <div class="card card-shadow">
-                            <div class="card-body">
-                                <h6 class="font-light m-b-30">“Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras venene veliel vestibulum.”</h6>
-                                <div class="d-flex no-block align-items-center">
-                                    <span class="thumb-img"><img src="images/testimonial/1.jpg" alt="wrapkit" class="circle"/></span>
-                                    <div class="m-l-20">
-                                        <h6 class="m-b-0 customer">Michelle Anderson</h6>
-                                        <div class="font-10">
-                                            <a href="" class="text-success"><i class="fa fa-star"></i></a>
-                                            <a href="" class="text-success"><i class="fa fa-star"></i></a>
-                                            <a href="" class="text-success"><i class="fa fa-star"></i></a>
-                                            <a href="" class="text-success"><i class="fa fa-star"></i></a>
-                                            <a href="" class="text-muted"><i class="fa fa-star"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endfor
-                </div>
-            </div>
-        </div> --}}
-        <!-- ============================================================== -->
-        <!-- End Testimonial 3  -->
 @endsection
 
 @section('script')

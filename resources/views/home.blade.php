@@ -13,7 +13,13 @@
 
     @section('jumbo-button')
     <a href="/kelas" class="btn btn-outline-light m-r-20 btn-md m-t-30 font-14">Lihat kelas</a>
-    <a href="/login" class="btn btn-md m-t-30 btn-success-gradiant font-14">Login</a>
+
+    @guest
+        <a href="/login" class="btn btn-md m-t-30 btn-success-gradiant font-14">Login</a>
+    @else
+        <a href="/peserta" class="btn btn-md m-t-30 btn-success-gradiant font-14">Kelas Saya</a>
+    @endguest
+    
     @endsection
     <!-- ============================================================== -->
     <!-- text  -->

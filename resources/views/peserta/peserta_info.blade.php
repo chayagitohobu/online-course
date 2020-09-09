@@ -53,8 +53,7 @@
                                     <label for="TINGKAT">TESTIMONI</label>
                                     <h6 class="p-2">{{ $peserta->testimoni}}</h6>
                                     <a class="btn btn-info-gradiant btn-arrow m-t-20 pr-5 pl-5" href="/peserta/{{$peserta->id}}/edit"><span> EDIT RATING DAN TESTIMONI <i class="ti-arrow-right"></i></span></a>
-                                </div>
-                                
+                                </div> 
                             @endif
                         </form>
                     </div>
