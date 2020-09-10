@@ -86,13 +86,24 @@
                     @foreach ($kelases as $kelas)
                         <div class="col-md-4">
                             <div class="card" data-aos="flip-left" data-aos-duration="1200">
-                                <a href="lihatkelas/{{$kelas->slug}}"><img class="card-img-top" src="{{ URL::asset('storage/kelas') }}/{{ $kelas->foto }}" alt="wrappixel kit"></a>
-                                <div class="date-pos bg-success-gradiant">RP.<span>{{$kelas->harga}}</span></div>
+                                <div style="height:35vh; overflow: hidden;" class="bg-light">
+                                    <a href="lihatkelas/{{$kelas->slug}}"><img class="card-img-top"  src="{{ URL::asset('storage/kelas') }}/{{ $kelas->foto }}" alt="wrappixel kit"></a>
+                                </div>
+                               @if ($kelas->harga <= 0 || null)
+                               <div class="date-pos bg-success-gradiant"><span>GRATIS</span></div>
+                               @else
+                               <div class="date-pos bg-success-gradiant">RP.<span>{{$kelas->harga}}</span></div>
+                               @endif
+                                
                                 <h5 class="font-medium m-t-30">{{$kelas->nama_kelas}}</h5>
                                 <h6 class="m-t-20">
                                     <div class="row">
                                         <div class="col-md-5">
+                                            @if ($kelas->harga <= 0 || null)
+                                            GRATIS
+                                            @else
                                             RP. {{ $kelas->harga}}
+                                            @endif
                                         </div>
                                         <div class="col-md-7">
                                            {{ $kelas->jenjang}} / {{ $kelas->tingkat}}

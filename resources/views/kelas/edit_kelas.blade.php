@@ -43,6 +43,12 @@
                                     <label for="foto_thumbnail">THUMBNAIL KELAS</label>
                                     <input type="file" value="{{$kelas->foto}}" name="foto" class="form-control" id="foto_thumbnail">
                                 </div>
+                                <div class="col-lg-12 justify-content-left pl-4">
+                                    <div class="form-group col-lg-7  card p-2 mt-3">
+                                        <img class="card-img-top" id="img" src="{{ URL::asset('storage/kelas') }}/default.png" alt="your image" />
+                                    </div>
+                                </div>
+                                
                                 <div class="form-group col-lg-4">
                                     <label for="jenjang">JENJANG</label>
                                     <select class="form-control" value="{{$kelas->jenjang}}" name="jenjang" id="jenjang">
@@ -127,6 +133,34 @@
         // }
 
         jQuery(document).ready(function(){
+
+
+            // Image    
+
+            $(function(){
+                $('#foto_thumbnail').change(function(){
+                    var input = this;
+                    var url = $(this).val();
+                    var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+                    if (input.files && input.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) 
+                    {
+                        var reader = new FileReader();
+
+                        reader.onload = function (e) {
+                        $('#img').attr('src', e.target.result);
+                        }
+                    reader.readAsDataURL(input.files[0]);
+                    }
+                    else
+                    {
+                    $('#img').attr('src', 'storage/kelas/default.png');
+                    }
+                });
+
+            });
+            // image end
+
+
             $('#summernote').summernote();
 
             jQuery('select[name= "jenjang"]').on('change', function(){

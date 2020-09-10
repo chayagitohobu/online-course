@@ -74,7 +74,18 @@
                 <div class="row justify-content-center">
                     <!-- Column -->
                     <div class="col-xl-5 align-self-center text-center" data-aos="fade-right" data-aos-duration="1200">
-                        <h1 class="title">Menjadi peserta <br> kelas ini dengan harga<br><b class="font-bold d-inline-block p-1"> RP. {{$kelas->harga}} </b><span class="text-success-gradiant font-bold typewrite"></span></h1>
+                        @if ($kelas->harga <= 0 || null)
+                            
+                            <h1 class="title">Menjadi peserta <br> kelas ini secara <br>
+                                <b class="font-bold d-inline-block p-1"> GRATIS </b>
+                            <span class="text-success-gradiant font-bold typewrite"></span></h1>
+                        @else
+                            <h1 class="title">Menjadi peserta <br> kelas ini dengan harga<br>
+                            <b class="font-bold d-inline-block p-1"> RP. {{$kelas->harga}} </b>
+                            <span class="text-success-gradiant font-bold typewrite"></span></h1>
+                        @endif
+                        
+                        
                         
                         @guest
                         <a href="{{ route('login') }}"><button class="btn btn-success"> GABUNG KELAS </button></a>
