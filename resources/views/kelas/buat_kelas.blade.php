@@ -133,8 +133,9 @@
             $(function(){
                 $('#foto_thumbnail').change(function(){
                     var input = this;
-                    var url = $(this).val();
-                    var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+                    var url = $(this).val(); // membuat url palsu
+                    var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase(); // mengambil extension
+                    
                     if (input.files && input.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) 
                     {
                         var reader = new FileReader();
@@ -153,7 +154,10 @@
             });
             // image end
 
-            $('#summernote').summernote();
+            $('#summernote').summernote({
+                tabsize: 2,
+                height: 300
+            });
             jQuery('select[name= "jenjang"]').on('change', function(){
                 var jenjang = jQuery(this).val();
                 
@@ -200,3 +204,4 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 @endsection
+

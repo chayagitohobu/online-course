@@ -106,8 +106,11 @@
                                             @endif
                                         </div>
                                         <div class="col-md-7">
-                                           {{ $kelas->jenjang}} / {{ $kelas->tingkat}}
-                                           {{-- {{ $kelas->jenjang}} / {{ $kelas->level}} --}}
+                                            @if ($kelas->jenjang == 'UMUM')
+                                            {{ $kelas->jenjang}} / {{ $kelas->level}}
+                                            @else
+                                            {{ $kelas->jenjang}} / {{ $kelas->tingkat}}
+                                            @endif
                                         </div>
                                     </div>
                                 </h6>    

@@ -10,7 +10,9 @@
                     <div class="col-xl-4">
                         <div style="height:15vh"></div>
                         <div class="card p-4" data-aos="flip-left" data-aos-duration="1200">
+                            <div style="height:35vh; overflow: hidden;">
                             <a href="/kelas-info"><img class="card-img-top" src="{{ URL::asset('storage/kelas') }}/{{ $kelas->foto }}" alt="wrappixel kit"></a>
+                            </div>
                             <h5 class="font-medium m-t-30">{{ $kelas->nama_kelas}}</h5>
                             <h6 class="m-t-20">
                                 <div class="row">
@@ -18,8 +20,11 @@
                                         RP. {{ $kelas->harga}}
                                     </div>
                                     <div class="col-md-7">
-                                       {{ $kelas->jenjang}} / {{ $kelas->tingkat}}
-                                       {{-- {{ $kelas->jenjang}} / {{ $kelas->level}} --}}
+                                        @if ($kelas->jenjang == 'UMUM')
+                                        {{ $kelas->jenjang}} / {{ $kelas->level}}
+                                        @else
+                                        {{ $kelas->jenjang}} / {{ $kelas->tingkat}}
+                                        @endif
                                     </div>
                                 </div>
                             </h6>

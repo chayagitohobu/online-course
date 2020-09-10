@@ -38,7 +38,12 @@
                                         RP. {{ $kelas->harga}}
                                     </div>
                                     <div class="col-md-7">
-                                       {{ $kelas->jenjang}} / {{ $kelas->tingkat}}
+                                        @if ($kelas->jenjang == 'UMUM')
+                                        {{ $kelas->jenjang}} / {{ $kelas->level}}
+                                        @else
+                                        {{ $kelas->jenjang}} / {{ $kelas->tingkat}}
+                                        @endif
+                                       
                                        {{-- {{ $kelas->jenjang}} / {{ $kelas->level}} --}}
                                     </div>
                                 </div>
