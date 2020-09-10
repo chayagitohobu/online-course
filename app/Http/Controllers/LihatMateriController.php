@@ -44,6 +44,8 @@ class LihatMateriController extends Controller
             ->where('materis.kelas_id', $kelas_id)
             ->get();
 
+
+
         $materi = DB::table('materis')
             ->where('materis.urutan', $urutan)
             ->where('materis.kelas_id', $kelas_id)
@@ -54,11 +56,12 @@ class LihatMateriController extends Controller
             ->orderBy('urutan', 'asc')
             ->get();
 
+        $banyakmateri = $daftarmateri->count();
+
         $kelas = DB::table('kelas')
             ->where('id', $kelas_id)
             ->first();
 
-        // return $daftarmateri;
 
         if (!empty($materi->id)) {
             $sudahbaca = new SudahBaca;
@@ -68,11 +71,42 @@ class LihatMateriController extends Controller
             $sudahbaca->save();
         }
 
+
+        if ($urutan < $banyakmateri) {
+            $materi_selanjutnya = DB::table('materis')
+                ->where('materis.urutan', $urutan + 1)
+                ->where('materis.kelas_id', $kelas_id)
+                ->first()->slug;
+        } else {
+            $materi_selanjutnya = DB::table('materis')
+                ->where('materis.urutan', $urutan)
+                ->where('materis.kelas_id', $kelas_id)
+                ->first()->slug;
+        }
+
+        if ($urutan >= 2) {
+
+            $materi_sebelumnya = DB::table('materis')
+                ->where('materis.urutan', $urutan - 1)
+                ->where('materis.kelas_id', $kelas_id)
+                ->first()->slug;
+        } else {
+            $materi_sebelumnya = DB::table('materis')
+                ->where('materis.urutan', $urutan)
+                ->where('materis.kelas_id', $kelas_id)
+                ->first()->slug;
+        }
+
         // echo "<pre>";
         // print_r($materis);
 
         // print_r($kelas);
-        return view('materi.baca_materi')->with('materis', $materis)->with('kelas', $kelas)->with('daftarmateri', $daftarmateri);
+        return view('materi.baca_materi')
+            ->with('materis', $materis)
+            ->with('kelas', $kelas)
+            ->with('daftarmateri', $daftarmateri)
+            ->with('materi_selanjutnya', $materi_selanjutnya)
+            ->with('materi_sebelumnya', $materi_sebelumnya);
     }
 
     public function index()
