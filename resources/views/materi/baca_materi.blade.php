@@ -72,7 +72,8 @@
                 <div class="col-xl-2 p-5 card card-shadow text-bold text-left mr-2" style="overflow-y: scroll;">
                     <h4 class="mb-5"> <b> DAFTAR MATERI </b> <hr></h4>
                     @foreach ($daftarmateri as $materi_item)
-                    <a href="{{route('tampilmateri',['kelas_id' => $materi_item->kelas_id, 'materi_id' => $materi_item->urutan])}}"><h6>{{$materi_item->urutan}} . {{$materi_item->judul}} <hr></h6></a>
+                        {{-- {{$materi_item->slug}} --}}
+                    <a href="{{route('tampilmateri',['kelas_slug' => $kelas->slug, 'materi_slug' => $materi_item->slug])}}"><h6>{{$materi_item->urutan}} . {{$materi_item->judul}} <hr></h6></a>
                     <hr>
                     @endforeach
                 </div>
@@ -94,10 +95,10 @@
                     
                     <div style="height:15vh"></div>
                     
-                    <div class="row justify-content-center">
+                    {{-- <div class="row justify-content-center">
                         @if ($materi->urutan != 1)
                             <div class="col-xl-3">
-                                <a type="button" href="{{route('tampilmateri',['kelas_id' => $materi->kelas_id, 'materi_id' => $materi->urutan - 1])}}" class="text-center btn text-white btn btn-success-gradiant"> <i class="ti-arrow-left"></i> SEBELUMNYA</a>
+                                <a type="button" href="{{route('tampilmateri',['kelas_slug' => $kelas->kelas_slug, 'materi_slug' => $materi->slug])}}" class="text-center btn text-white btn btn-success-gradiant"> <i class="ti-arrow-left"></i> SEBELUMNYA</a>
                             </div>
                         @else
                         <div class="col-xl-3">
@@ -109,9 +110,9 @@
                             <a type="button" href="" class="text-center btn text-white btn btn-info-gradiant"> SAYA MENGERTI </a>
                         </div>
                         <div class="col-xl-3">
-                            <a type="button" href="{{route('tampilmateri',['kelas_id' => $materi->kelas_id, 'materi_id' => $materi->urutan + 1])}}" class="text-center btn text-white btn btn-success-gradiant"> SELANJUTNYA <i class="ti-arrow-right"></i></a>
+                            <a type="button" href="{{route('tampilmateri',['kelas_slug' => $materi->kelas_slug, 'materi_slug' => $materi->slug])}}" class="text-center btn text-white btn btn-success-gradiant"> SELANJUTNYA <i class="ti-arrow-right"></i></a>
                         </div>
-                    </div>
+                    </div> --}}
                     
                     @endforeach
 

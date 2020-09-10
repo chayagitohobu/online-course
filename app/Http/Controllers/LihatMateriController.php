@@ -30,8 +30,15 @@ class LihatMateriController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function tampilmateri($kelas_id, $urutan)
+    public function tampilmateri($kelas_slug, $materi_slug)
     {
+
+        $kelas = Kelas::where('slug', $kelas_slug)->first();
+        $kelas_id = $kelas['id'];
+
+        $materi = Materi::where('slug', $materi_slug)->first();
+        $urutan = $materi['urutan'];
+
         $materis = DB::table('materis')
             ->where('materis.urutan', $urutan)
             ->where('materis.kelas_id', $kelas_id)
@@ -51,6 +58,7 @@ class LihatMateriController extends Controller
             ->where('id', $kelas_id)
             ->first();
 
+        // return $daftarmateri;
 
         if (!empty($materi->id)) {
             $sudahbaca = new SudahBaca;

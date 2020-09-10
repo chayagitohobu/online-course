@@ -63,10 +63,13 @@ class LihatKelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $kelas = Kelas::find($id);
-        $materis = Materi::where('kelas_id', $id)->get();
+        // $kelas = Kelas::find($id);
+        $kelas = Kelas::where('slug', $slug)->first();
+        $kelas_id = $kelas['id'];
+        $materis = Materi::where('kelas_id', $kelas_id)->get();
+        $materi_pertama = Materi::where('kelas_id', $kelas_id)->first();
         $user = User::where('id', $kelas['user_id'])->first(); // User yang membuat kelas
         $user_id = auth()->user();
 
@@ -78,16 +81,16 @@ class LihatKelasController extends Controller
 
             $check_user_adalah_peserta = DB::table('pesertas')
                 ->where('user_id', '=', $user_id)
-                ->where('kelas_id', '=', $id)
+                ->where('kelas_id', '=', $kelas_id)
                 ->count();
 
             if ($check_user_adalah_peserta > 0) {
 
                 $masuk = DB::table('pesertas')
                     ->where('user_id', '=', $user_id)
-                    ->where('kelas_id', '=', $id)
+                    ->where('kelas_id', '=', $kelas_id)
                     ->get();
-                return redirect('lihatmateri/' . $id . '/1');
+                return redirect('lihatmateri/' . $slug . '/' . $materi_pertama['slug']);
             } else {
                 return view('kelas.kelas_info')->with('kelas', $kelas)->with('materis', $materis)->with('user', $user);
             }

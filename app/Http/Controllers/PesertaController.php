@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Peserta;
+use App\Materi;
 use App\User;
 use App\Kelas;
 use Illuminate\Support\Facades\DB;
@@ -77,6 +78,12 @@ class PesertaController extends Controller
             ->join('pesertas', 'kelas.id', 'pesertas.kelas_id')
             ->where('pesertas.id', $id)
             ->first()->kelas_id;
+        $kelas_slug = DB::table('kelas')
+            ->join('pesertas', 'kelas.id', 'pesertas.kelas_id')
+            ->where('pesertas.id', $id)
+            ->first()->slug;
+
+        $materi_pertama_slug = Materi::where('kelas_id', $kelas_id)->first()->slug;
 
         $user_creator_and_kelas = DB::table('kelas')
             ->join('users', 'kelas.user_id', 'users.id')
@@ -86,7 +93,11 @@ class PesertaController extends Controller
         // return $pesertas;
         // echo "<pre>";
         // print_r($user_creator_and_kelas);
-        return view('peserta.peserta_info')->with('peserta', $peserta)->with('kelas', $user_creator_and_kelas);
+        return view('peserta.peserta_info')
+            ->with('peserta', $peserta)
+            ->with('kelas', $user_creator_and_kelas)
+            ->with('materi_slug', $materi_pertama_slug)
+            ->with('kelas_slug', $kelas_slug);
     }
 
     /**

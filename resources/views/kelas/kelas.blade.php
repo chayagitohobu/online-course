@@ -86,7 +86,7 @@
                     @foreach ($kelases as $kelas)
                         <div class="col-md-4">
                             <div class="card" data-aos="flip-left" data-aos-duration="1200">
-                                <a href="lihatkelas/{{$kelas->id}}"><img class="card-img-top" src="{{ URL::asset('storage/kelas') }}/{{ $kelas->foto }}" alt="wrappixel kit"></a>
+                                <a href="lihatkelas/{{$kelas->slug}}"><img class="card-img-top" src="{{ URL::asset('storage/kelas') }}/{{ $kelas->foto }}" alt="wrappixel kit"></a>
                                 <div class="date-pos bg-success-gradiant">RP.<span>{{$kelas->harga}}</span></div>
                                 <h5 class="font-medium m-t-30">{{$kelas->nama_kelas}}</h5>
                                 <h6 class="m-t-20">
@@ -100,7 +100,7 @@
                                         </div>
                                     </div>
                                 </h6>    
-                                <a data-toggle="collapse" href="lihatkelas/{{$kelas->id}}" class="linking text-themecolor m-t-10">Lihat kelas <i class="ti-arrow-right"></i></a>
+                                <a data-toggle="collapse" href="lihatkelas/{{$kelas->slug}}" class="linking text-themecolor m-t-10">Lihat kelas <i class="ti-arrow-right"></i></a>
                             </div>
                         </div>
                     @endforeach
