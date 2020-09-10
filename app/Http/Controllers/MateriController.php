@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use App\Materi;
 use App\User;
 use App\Kelas;
@@ -81,6 +82,7 @@ class MateriController extends Controller
         $materi->file = $request->input('file');
         $materi->urutan = $request->input('urutan');
         $materi->foto = $fileNameToStore;
+        $materi->slug = SlugService::createSlug(Materi::class, 'slug', $request->input('judul'));
         $materi->save();
         return redirect('/materi')->with('success', 'materi telah di buat');
     }
@@ -144,6 +146,7 @@ class MateriController extends Controller
         $materi->file = $request->input('file');
         $materi->urutan = $request->input('urutan');
         $materi->foto = $fileNameToStore;
+        $materi->slug = SlugService::createSlug(Materi::class, 'slug', $request->input('judul'));
         $materi->save();
         return redirect('/materi')->with('success', 'materi telah di edit');
     }

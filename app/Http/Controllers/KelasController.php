@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Kelas;
 use App\User;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class KelasController extends Controller
 {
@@ -26,6 +27,7 @@ class KelasController extends Controller
      */
     public function index()
     {
+
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
         return view('kelas.index')->with('kelas', $user->kelas);
@@ -93,8 +95,8 @@ class KelasController extends Controller
         $kelas->kategori = $request->input('kategori');
         $kelas->berbayar = $request->input('berbayar');
         $kelas->status = $request->input('status');
-        $kelas->slug = $request->input('slug');
-
+        // $kelas->slug = $request->input('slug');
+        $kelas->slug = SlugService::createSlug(Kelas::class, 'slug', $request->input('nama_kelas'));
         $kelas->save();
 
         return redirect('/kelas')->with('success', 'Kelas telah di buat');
@@ -166,8 +168,8 @@ class KelasController extends Controller
         $kelas->kategori = $request->input('kategori');
         $kelas->berbayar = $request->input('berbayar');
         $kelas->status = $request->input('status');
-        $kelas->slug = $request->input('slug');
-
+        // $kelas->slug = $request->input('slug');
+        $kelas->slug = SlugService::createSlug(Kelas::class, 'slug', $request->input('nama_kelas'));
         $kelas->save();
 
         return redirect('/kelas')->with('success', 'Kelas telah di edit');
