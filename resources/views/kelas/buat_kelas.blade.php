@@ -21,7 +21,7 @@
                 <div style="height:20vh"></div>
                 <div class="row justify-content-center">
                     <div style="height:20vh"></div>
-                        <div class="col-xl-8 p-5">
+                        <div class="col-xl-10 p-5">
                             @include('inc.messages')
                             {{-- <form class="row pr-5" action="KelasController@store" method="POST"> --}}
                                 {!! Form::open(['action'=>'KelasController@store', 'method' => 'POST','enctype' => 'multipart/form-data' , 'class'=> 'row pr-5']) !!}
@@ -45,6 +45,7 @@
                                 <div class="form-group col-lg-4">
                                     <label for="jenjang">JENJANG</label>
                                     <select class="form-control" value="SD" name="jenjang" id="jenjang">
+                                        <option selected='false'>Pilih.. </option>
                                         <option>SD</option>
                                         <option>SMP</option>
                                         <option>SMA</option>

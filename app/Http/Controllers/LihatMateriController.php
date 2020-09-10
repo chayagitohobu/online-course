@@ -8,6 +8,7 @@ use App\Kelas;
 use App\Peserta;
 use App\Materi;
 use App\User;
+use App\SudahBaca;
 
 
 class LihatMateriController extends Controller
@@ -36,6 +37,11 @@ class LihatMateriController extends Controller
             ->where('materis.kelas_id', $kelas_id)
             ->get();
 
+        $materi = DB::table('materis')
+            ->where('materis.urutan', $urutan)
+            ->where('materis.kelas_id', $kelas_id)
+            ->first();
+
         $daftarmateri = DB::table('materis')
             ->where('materis.kelas_id', $kelas_id)
             ->orderBy('urutan', 'asc')
@@ -45,8 +51,17 @@ class LihatMateriController extends Controller
             ->where('id', $kelas_id)
             ->first();
 
+
+        if (!empty($materi->id)) {
+            $sudahbaca = new SudahBaca;
+            $sudahbaca->kelas_id = $kelas_id;
+            $sudahbaca->user_id = auth()->user()->id;
+            $sudahbaca->materi_id = $materi->id;
+            $sudahbaca->save();
+        }
+
         // echo "<pre>";
-        // print_r($daftarmateri);
+        // print_r($materis);
 
         // print_r($kelas);
         return view('materi.baca_materi')->with('materis', $materis)->with('kelas', $kelas)->with('daftarmateri', $daftarmateri);

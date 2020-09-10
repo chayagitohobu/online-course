@@ -86,7 +86,7 @@
                     <br><br>
                     <span class="label btn-success-gradiant label-rounded text-medium"> MATERI {{$materi->urutan}} </span>
                     <h3 class="title font-bold col-lg-12 mt-5" style="text-transform: uppercase">{{$materi->judul}}<hr></h3>
-                    <h6 class="col-lg-12 mt-5 title text-left">{!! $materi->deskripsi !!}</h6>
+                    <div class="col-lg-12 mt-5 title text-left">{!! $materi->deskripsi !!}</div>
                     <br><br>
                     <div class="text-left">
                         <a type="button" href="{{$materi->file}}" class="text-center btn btn btn-outline-success" style="font-size: small"> DOWNLOAD FILE PELAJARAN<i class="ti-arrow-down"></i></a><br><br><hr>
