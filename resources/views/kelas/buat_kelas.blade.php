@@ -44,9 +44,23 @@
                                 </div>
                                 <div class="col-lg-12 justify-content-left pl-4">
                                     <div class="form-group col-lg-7  card p-2 mt-3">
-                                        <img class="card-img-top" id="img" src="{{ URL::asset('storage/kelas') }}/default.png" alt="your image" />
+                                        <img class="card-img-top" id="img" src="{{ URL::asset('storage/kelas') }}/default.png" alt="anda belum menginputkan thumbnail kelas" />
                                     </div>
                                 </div>
+
+                                <div class="form-group col-lg-9">
+                                    <label for="video">VIDEO PREVIEW</label>
+                                    <input type="text" name="video" class="form-control" id="video">
+                                </div>
+
+                                <div class="col-lg-12 justify-content-left pl-4 mb-5">
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        {{-- <iframe width="853" height="480" src="https://www.youtube.com/embed/{{$kelas->video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+                                        <iframe id='youtube' width="853" height="480" src="https://www.youtube.com/embed/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+
+
                                 <div class="form-group col-lg-4">
                                     <label for="jenjang">JENJANG</label>
                                     <select class="form-control" value="SD" name="jenjang" id="jenjang">
@@ -126,10 +140,31 @@
         // }
 
         jQuery(document).ready(function(){
+            
+            // VIDEO
+            jQuery('#video').on('change', function(){
+            
+                var input = jQuery(this).val();
+
+                function getId(url) {
+                const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+                const match = url.match(regExp);
+
+                return (match && match[2].length === 11)
+                ? match[2]
+                : null;
+                }
+                
+                const videoId = getId(input);
+                const iframeMarkup = '<iframe width="560" height="315" src="//www.youtube.com/embed/' 
+                    + videoId + '" frameborder="0" allowfullscreen></iframe>';
+                
+                $('#youtube').attr('src', "https://www.youtube.com/embed/"+ videoId);
+            })
+            // VIDEO END    
 
 
             // Image    
-
             $(function(){
                 $('#foto_thumbnail').change(function(){
                     var input = this;
@@ -158,6 +193,7 @@
                 tabsize: 2,
                 height: 300
             });
+
             jQuery('select[name= "jenjang"]').on('change', function(){
                 var jenjang = jQuery(this).val();
                 

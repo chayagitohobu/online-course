@@ -106,7 +106,7 @@
                         <!-- 16:9 aspect ratio -->
                         <div class="embed-responsive embed-responsive-16by9">
                             {{-- <iframe width="853" height="480" src="https://www.youtube.com/embed/{{$kelas->video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
-                            <iframe width="853" height="480" src="https://www.youtube.com/embed/{{$kelas->video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe id="youtube" width="853" height="480" src="https://www.youtube.com/embed/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
@@ -224,4 +224,40 @@
         </div>
         <!-- ============================================================== -->
         <!-- End Testimonial 3  -->
+@endsection
+
+@section('script')
+    <script>
+
+        // window.onload = function() {
+        //     if (window.jQuery) {  
+        //         // jQuery is loaded  
+        //         alert("Yeah!");
+        //     } else {
+        //         // jQuery is not loaded
+        //         alert("Doesn't Work");
+        //     }
+        // }
+
+        jQuery(document).ready(function(){
+
+            var input = {!! json_encode($kelas->video) !!};
+
+            function getId(url) {
+                const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+                const match = url.match(regExp);
+
+                return (match && match[2].length === 11)
+                ? match[2]
+                : null;
+            }
+
+            
+            const videoId = getId(input);
+            // alert(videoId);
+
+            $('#youtube').attr('src', "https://www.youtube.com/embed/"+ videoId);
+        });
+
+    </script>
 @endsection
