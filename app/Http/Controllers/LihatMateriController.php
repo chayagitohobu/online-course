@@ -44,8 +44,6 @@ class LihatMateriController extends Controller
             ->where('materis.kelas_id', $kelas_id)
             ->get();
 
-
-
         $materi = DB::table('materis')
             ->where('materis.urutan', $urutan)
             ->where('materis.kelas_id', $kelas_id)
@@ -63,14 +61,29 @@ class LihatMateriController extends Controller
             ->first();
 
 
-        if (!empty($materi->id)) {
-            $sudahbaca = new SudahBaca;
-            $sudahbaca->kelas_id = $kelas_id;
-            $sudahbaca->user_id = auth()->user()->id;
-            $sudahbaca->materi_id = $materi->id;
-            $sudahbaca->save();
-        }
 
+
+        // MEMBUAT DATA SUDAH BACA BARU //
+        // JIKA MATERI
+        if (!empty($materi->id)) {
+
+            // CEK APAKAH DATA SUDAH BACA DENGAN MATERI ID SEKARANG
+            $check_keberadaan_sudah_baca = DB::table('sudah_bacas')
+                ->where('user_id', auth()->user()->id)
+                ->where('kelas_id', $kelas_id)
+                ->where('materi_id', $materi->id)
+                ->first();
+
+            // JIKA TIDAK ADA MAKA BUAT DATA SUDAH BACA BARU
+            if (empty($check_keberadaan_sudah_baca)) {
+                $sudahbaca = new SudahBaca;
+                $sudahbaca->kelas_id = $kelas_id;
+                $sudahbaca->user_id = auth()->user()->id;
+                $sudahbaca->materi_id = $materi->id;
+                $sudahbaca->save();
+            }
+        }
+        // MEMBUAT DATA SUDAH BACA BARU END //
 
         if ($urutan < $banyakmateri) {
             $materi_selanjutnya = DB::table('materis')

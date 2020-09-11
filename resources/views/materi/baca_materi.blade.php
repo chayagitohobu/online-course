@@ -101,16 +101,15 @@
                         </div>
                         
                         <div class="col-xl-3">
+                            {{-- {!! Form::open(['action'=>['MateriController@update', $materi->id], 'method' => 'POST']) !!} --}}
                             <a type="button" href="" class="text-center btn text-white btn btn-info-gradiant"> SAYA MENGERTI </a>
+                            {{-- {!! Form::close() !!} --}}
                         </div>
                         <div class="col-xl-3">
                             <a type="button" href="{{route('tampilmateri',['kelas_slug' => $kelas->slug, 'materi_slug' => $materi_selanjutnya])}}" class="text-center btn text-white btn btn-success-gradiant"> SELANJUTNYA <i class="ti-arrow-right"></i></a>
                         </div>
                     </div>
-                    
                     @endforeach
-
-                    
                 </div>
             </div>
         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\SudahBaca;
 use Illuminate\Http\Request;
 
 class SudahBacaController extends Controller
@@ -68,7 +69,8 @@ class SudahBacaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $sudahbacas = SudahBaca::find($id);
+        // return $sudahbacas;
     }
 
     /**
