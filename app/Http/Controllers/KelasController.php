@@ -32,13 +32,17 @@ class KelasController extends Controller
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
         $kelas = Kelas::where('user_id', $user_id)->first();
-        $check_kategori = Kategori::where('id', $kelas->kategori_id)->first();
 
-        if ($check_kategori != null || '') {
-            $kategori = Kategori::where('id', $kelas->kategori_id)->first()->kategori;
+        if (!empty($kelas)) {
+            if (!$kelas->kategori_id) {
+                $kategori = Kategori::where('id', $kelas->kategori_id)->first()->kategori;
+            } else {
+                $kategori = "";
+            }
         } else {
             $kategori = "";
         }
+
         return view('kelas.index')->with('kelas', $user->kelas)->with('kategori', $kategori);
     }
 
