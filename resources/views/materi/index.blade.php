@@ -11,7 +11,7 @@
                         <div style="height:15vh"></div>
                         <div class="card p-4" data-aos="flip-left" data-aos-duration="1200">
                             <div style="height:35vh; overflow: hidden;">
-                            <a href="/kelas-info"><img class="card-img-top" src="{{ URL::asset('storage/kelas') }}/{{ $kelas->foto }}" alt="wrappixel kit"></a>
+                            <a href="/lihatkelas/{{ $kelas->slug}}"><img class="card-img-top" src="{{ URL::asset('storage/kelas') }}/{{ $kelas->foto }}" alt="wrappixel kit"></a>
                             </div>
                             <h5 class="font-medium m-t-30">{{ $kelas->nama_kelas}}</h5>
                             <h6 class="m-t-20">
@@ -28,7 +28,7 @@
                                     </div>
                                 </div>
                             </h6>
-                            <a data-toggle="collapse" href="#" class="linking text-themecolor m-t-10">Lihat Kelas <i class="ti-arrow-right"></i></a>
+                            <a data-toggle="collapse" href="/lihatkelas/{{ $kelas->slug}}" class="linking text-themecolor m-t-10">Lihat Kelas <i class="ti-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="col-xl-8 p-5">

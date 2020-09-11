@@ -196,7 +196,10 @@
             // image end
 
 
-            $('#summernote').summernote();
+            $('#summernote').summernote({
+                tabsize: 5,
+                height: 300
+            });
 
             jQuery('select[name= "jenjang"]').on('change', function(){
                 var jenjang = jQuery(this).val();

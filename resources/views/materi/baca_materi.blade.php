@@ -80,13 +80,14 @@
                     @foreach ($materis as $materi)
                     <div class="col-xl-12">
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe width="853" height="480" src="https://www.youtube.com/embed/{{$materi->video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            {{-- <iframe width="853" height="480" src="https://www.youtube.com/embed/{{$kelas->video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+                            <iframe id="youtube" width="853" height="480" src="https://www.youtube.com/embed/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     </div>
                     <br><br>
                     <span class="label btn-success-gradiant label-rounded text-medium"> MATERI {{$materi->urutan}} </span>
                     <h3 class="title font-bold col-lg-12 mt-5" style="text-transform: uppercase">{{$materi->judul}}<hr></h3>
-                    <div class="col-lg-12 mt-5 title text-left">{!! $materi->deskripsi !!}</div>
+                    <div class="col-lg-12 mt-5 title text-left" style="color: black !important;">{!! $materi->deskripsi !!}</div>
                     <br><br>
                     <div class="text-left">
                         <a type="button" href="{{$materi->file}}" class="text-center btn btn btn-outline-success" style="font-size: small"> DOWNLOAD FILE PELAJARAN<i class="ti-arrow-down"></i></a><br><br><hr>
@@ -112,13 +113,31 @@
                     
                 </div>
             </div>
-            
-            
         </div>
 
 
 @endsection
 
 @section('script')
-    
+   <script>
+        jQuery(document).ready(function(){
+
+            var input = {!! json_encode($materi->video) !!};
+
+            function getId(url) {
+                const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+                const match = url.match(regExp);
+
+                return (match && match[2].length === 11)
+                ? match[2]
+                : null;
+            }
+
+
+            const videoId = getId(input);
+            // alert(videoId);
+
+            $('#youtube').attr('src', "https://www.youtube.com/embed/"+ videoId);
+        });
+    </script> 
 @endsection
