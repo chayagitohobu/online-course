@@ -128,7 +128,14 @@
             </div>
         </div>
     </div>
+    @if (empty($kelas->video))
+        <input type="hidden" value="" id="video">
+    @else
+        <input type="hidden" value="{{ $kelas->video}}" id="video">
+    @endif
+    
 @endsection
+
 
 @section('script')
     <script>
@@ -145,7 +152,7 @@
 
         jQuery(document).ready(function(){
 
-            var input = {!! json_encode($kelas->video) !!};
+            var input = jQuery("#video").val();
 
             function getId(url) {
                 const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
