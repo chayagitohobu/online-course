@@ -142,6 +142,12 @@
                                                 <br>
                                                 <h2 class="title">Tentang kelas</h2>
                                                 <br>
+                                                @if (!empty($kategori))
+                                                    <h6 class="subtitle" style="font-size: medium">
+                                                        Kategori : {!! $kategori->kategori !!}</h6>
+                                                    <br>
+                                                @endif
+
                                                 <h6 class="subtitle" style="font-size: medium">
                                                     {!! $kelas->deskripsi !!}</h6>
                                                 <br>

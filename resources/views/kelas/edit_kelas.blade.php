@@ -103,13 +103,22 @@
                                     <label for="Diskon">DISKON PER PERSEN</label>
                                     <input type="number" value="{{$kelas->diskon}}" name="diskon" class="form-control" id="Diskon">
                                 </div>
-                                <div class="form-group col-lg-6">
+                                <div class="form-group col-lg-4">
                                     <label for="DURASI">DURASI PER JAM</label>
                                     <input type="number" value="{{$kelas->durasi}}" name="durasi" class="form-control" id="DURASI">
                                 </div>
-                                <div class="form-group col-lg-6">
+                                <div class="form-group col-lg-4">
                                     <label for="KAPASITAS">KAPASITAS PER ORANG</label>
                                     <input type="number" value="{{$kelas->kapasitas}}" name="kapasitas" class="form-control" id="KAPASITAS">
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label for="KAPASITAS">KATEGORI</label>
+                                    <select class="form-control" name="kategori" id="kategori">
+                                        <option value="Pilih.." selected="false">Pilih..</option>
+                                        @foreach ($kategoris as $kategori)
+                                            <option value="{{$kategori->id}}">{{$kategori->kategori}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 {{-- <input type="hidden" value="default_user.png" name="foto" class="form-control">
                                 <input type="hidden" value="default_user.png" name="video" class="form-control">

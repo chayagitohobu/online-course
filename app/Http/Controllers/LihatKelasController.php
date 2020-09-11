@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Kelas;
@@ -68,13 +69,15 @@ class LihatKelasController extends Controller
         // $kelas = Kelas::find($id);
         $kelas = Kelas::where('slug', $slug)->first();
         $kelas_id = $kelas['id'];
+
+        $kategori = Kategori::where('id', $kelas->kategori_id)->first();
+
         $materis = Materi::where('kelas_id', $kelas_id)->get();
         $materi_pertama = Materi::where('kelas_id', $kelas_id)->first();
         $user = User::where('id', $kelas['user_id'])->first(); // User yang membuat kelas
         $user_id = auth()->user();
 
         if (empty($user_id)) {
-
             return view('kelas.kelas_info')->with('kelas', $kelas)->with('materis', $materis)->with('user', $user);
         } else {
             $user_id = auth()->user()->id;
@@ -92,7 +95,7 @@ class LihatKelasController extends Controller
                     ->get();
                 return redirect('lihatmateri/' . $slug . '/' . $materi_pertama['slug']);
             } else {
-                return view('kelas.kelas_info')->with('kelas', $kelas)->with('materis', $materis)->with('user', $user);
+                return view('kelas.kelas_info')->with('kelas', $kelas)->with('materis', $materis)->with('user', $user)->with('kategori',  $kategori);
             }
         }
 

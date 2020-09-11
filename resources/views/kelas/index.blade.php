@@ -102,13 +102,17 @@
                                     <label for="Diskon">DISKON</label>
                                     <input type="text" value="{{ $kelas->diskon}} %" name="Diskon" readonly class="form-control" id="Diskon">
                                 </div>
-                                <div class="form-group col-lg-6">
+                                <div class="form-group col-lg-4">
                                     <label for="DURASI">DURASI</label>
                                     <input type="text" value="{{ $kelas->durasi}} JAM" name="" readonly class="form-control" id="DURASI">
                                 </div>
-                                <div class="form-group col-lg-6">
+                                <div class="form-group col-lg-4">
                                     <label for="KAPASITAS">KAPASITAS</label>
                                     <input type="text" value="{{ $kelas->kapasitas}} ORANG" name="KAPASITAS" readonly class="form-control" id="KAPASITAS">
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label for="KATEGORI">KATEGORI</label>
+                                    <input type="text" value="{{ $kategori}}" name="kategori" readonly class="form-control" id="KAPASITAS">
                                 </div>
                                 <div class="form-group col-lg-7 text-right p-4">
                                     <a href="materi" class="btn btn-success-gradiant pr-5 pl-5"> MATERI KELAS </a>

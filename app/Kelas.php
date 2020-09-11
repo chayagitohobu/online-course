@@ -19,6 +19,11 @@ class Kelas extends Model
         return $this->hasMany('App\Materi');
     }
 
+    public function kategori()
+    {
+        return $this->belongsTo('App\Kategori');
+    }
+
     public function sluggable()
     {
         return [

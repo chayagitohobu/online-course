@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Kategori;
 use Illuminate\Http\Request;
 use App\Kelas;
 use App\User;
@@ -30,7 +31,15 @@ class KelasController extends Controller
 
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
-        return view('kelas.index')->with('kelas', $user->kelas);
+        $kelas = Kelas::where('user_id', $user_id)->first();
+        $check_kategori = Kategori::where('id', $kelas->kategori_id)->first();
+
+        if ($check_kategori != null || '') {
+            $kategori = Kategori::where('id', $kelas->kategori_id)->first()->kategori;
+        } else {
+            $kategori = "";
+        }
+        return view('kelas.index')->with('kelas', $user->kelas)->with('kategori', $kategori);
     }
 
     /**
@@ -41,13 +50,13 @@ class KelasController extends Controller
     public function create()
     {
         // return Kelas::where('user_id', '=', auth()->user()->id)->count() > 0;
-
+        $kategoris = Kategori::all();
         if (Kelas::where('user_id', '=', auth()->user()->id)->count() > 0) {
 
             return redirect('/kelas')->with('danger', 'Anda telah membuat kelas');
         } else {
             $kelas = Kelas::all();
-            return view('kelas.buat_kelas')->with('kelas', $kelas);
+            return view('kelas.buat_kelas')->with('kelas', $kelas)->with('kategoris', $kategoris);
         }
     }
 
@@ -59,6 +68,7 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'nama_kelas' => 'required',
             'foto' => 'image|nullable|max:1999'
@@ -77,6 +87,8 @@ class KelasController extends Controller
             $fileNameToStore = 'default.png';
         }
 
+
+
         $kelas = new Kelas;
         $kelas->user_id = auth()->user()->id;
 
@@ -92,7 +104,7 @@ class KelasController extends Controller
 
         $kelas->foto = $fileNameToStore;
         $kelas->video = $request->input('video');
-        $kelas->kategori = $request->input('kategori');
+        $kelas->kategori_id = $request->input('kategori');
         $kelas->berbayar = $request->input('berbayar');
         $kelas->status = $request->input('status');
         // $kelas->slug = $request->input('slug');
@@ -122,7 +134,8 @@ class KelasController extends Controller
     public function edit($id)
     {
         $kelas = Kelas::find($id);
-        return view('kelas.edit_kelas')->with('kelas', $kelas);
+        $kategoris = Kategori::all();
+        return view('kelas.edit_kelas')->with('kelas', $kelas)->with('kategoris', $kategoris);
     }
 
     /**
@@ -165,7 +178,7 @@ class KelasController extends Controller
 
         $kelas->foto = $fileNameToStore;
         $kelas->video = $request->input('video');
-        $kelas->kategori = $request->input('kategori');
+        $kelas->kategori_id = $request->input('kategori');
         $kelas->berbayar = $request->input('berbayar');
         $kelas->status = $request->input('status');
         // $kelas->slug = $request->input('slug');
