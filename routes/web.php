@@ -46,7 +46,7 @@ Route::get('/lihatmateri/{kelas_slug}/{materi_slug}', 'LihatMateriController@tam
 Route::get('/getKota_Kabupaten/{id}', 'UserController@getKota_Kabupaten')->name('getKota_Kabupaten');
 Route::get('/getKecamatan/{id}', 'UserController@getKecamatan')->name('getKecamatan');
 Route::get('/getKelurahan/{id}', 'UserController@getKelurahan')->name('getKelurahan');
-
+Route::get('/addPaham/{kelas_slug}/{materi_slug}}', 'SudahBacaController@addPaham')->name('addPaham');
 
 Auth::routes();
 

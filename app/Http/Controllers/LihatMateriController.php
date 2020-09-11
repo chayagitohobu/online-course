@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Kelas;
-use App\Peserta;
 use App\Materi;
+use App\Peserta;
 use App\User;
 use App\SudahBaca;
 
@@ -44,10 +44,10 @@ class LihatMateriController extends Controller
             ->where('materis.kelas_id', $kelas_id)
             ->get();
 
-        $materi = DB::table('materis')
-            ->where('materis.urutan', $urutan)
-            ->where('materis.kelas_id', $kelas_id)
-            ->first();
+        // $materi = DB::table('materis')
+        //     ->where('materis.urutan', $urutan)
+        //     ->where('materis.kelas_id', $kelas_id)
+        //     ->first();
 
         $daftarmateri = DB::table('materis')
             ->where('materis.kelas_id', $kelas_id)
@@ -81,6 +81,15 @@ class LihatMateriController extends Controller
                 $sudahbaca->user_id = auth()->user()->id;
                 $sudahbaca->materi_id = $materi->id;
                 $sudahbaca->save();
+                // SIMPAN 'TIDAK' KE VARIABLE PAHAM SEHINGGA KETIKA MENGIRIM $PAHAM TIDAK KOSONG
+                $paham = 'tidak';
+            } else {
+                // JIKA ADA MAKA SIMPAN DATA PAHAM ATAU TIDAK
+                $paham = DB::table('sudah_bacas')
+                    ->where('user_id', auth()->user()->id)
+                    ->where('kelas_id', $kelas_id)
+                    ->where('materi_id', $materi->id)
+                    ->first()->paham;
             }
         }
         // MEMBUAT DATA SUDAH BACA BARU END //
@@ -112,12 +121,12 @@ class LihatMateriController extends Controller
 
         // echo "<pre>";
         // print_r($materis);
-
         // print_r($kelas);
         return view('materi.baca_materi')
             ->with('materis', $materis)
             ->with('kelas', $kelas)
             ->with('daftarmateri', $daftarmateri)
+            ->with('paham', $paham)
             ->with('materi_selanjutnya', $materi_selanjutnya)
             ->with('materi_sebelumnya', $materi_sebelumnya);
     }

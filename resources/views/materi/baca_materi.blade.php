@@ -72,7 +72,7 @@
                 <div class="col-xl-2 p-5 card card-shadow text-bold text-left mr-2" style="overflow-y: scroll;">
                     <h4 class="mb-5"> <b> DAFTAR MATERI </b> <hr></h4>
                     @foreach ($daftarmateri as $materi_item)
-                    <a href="{{route('tampilmateri',['kelas_slug' => $kelas->slug, 'materi_slug' => $materi_item->slug])}}"><h6>{{$materi_item->urutan}} . {{$materi_item->judul}} <hr></h6></a>
+                    <a href="{{route('tampilmateri',['kelas_slug' => $kelas->slug, 'materi_slug' => $materi_item->slug])}}"><h6 style="font-size: smaller;">{{$materi_item->urutan}}) {{$materi_item->judul}} <hr></h6></a>
                     <hr>
                     @endforeach
                 </div>
@@ -101,9 +101,14 @@
                         </div>
                         
                         <div class="col-xl-3">
-                            {{-- {!! Form::open(['action'=>['MateriController@update', $materi->id], 'method' => 'POST']) !!} --}}
-                            <a type="button" href="" class="text-center btn text-white btn btn-info-gradiant"> SAYA MENGERTI </a>
-                            {{-- {!! Form::close() !!} --}}
+                            <a href="{{route('addPaham',['kelas_slug' => $kelas->slug, 'materi_slug' => $materi->slug])}}">
+                                @if ($paham == null || $paham == 'tidak')
+                                <button type="button" id="paham" class="text-center btn text-white btn btn-danger-gradiant"> SAYA MENGERTI <i class="ti-face-sad"></i></button>
+                                @else
+                                <button type="button" id="paham" class="text-center btn text-white btn btn-info-gradiant"> SAYA MENGERTI <i class="ti-face-smile"></i></button>
+                                @endif
+                                
+                            </a>
                         </div>
                         <div class="col-xl-3">
                             <a type="button" href="{{route('tampilmateri',['kelas_slug' => $kelas->slug, 'materi_slug' => $materi_selanjutnya])}}" class="text-center btn text-white btn btn-success-gradiant"> SELANJUTNYA <i class="ti-arrow-right"></i></a>
@@ -119,8 +124,27 @@
 
 @section('script')
    <script>
-        jQuery(document).ready(function(){
 
+    //    $('#paham').click(function(){
+    //        var paham = 'ya';
+    //        var kelas_slug = {!! json_encode($kelas->slug) !!};
+    //        var materi_slug = {!! json_encode($materi->slug) !!};
+    //         if(paham){
+    //             jQuery.ajax({
+    //                 url: '/addPaham/'+kelas_slug+'/'+materi_slug+'/'+paham,
+    //                 type: 'GET',
+    //                 dataType: 'json',
+    //                 success:function(data){
+    //                     alert('sudah');
+    //                 }
+    //             })
+    //         }
+    //    })
+
+        jQuery(document).ready(function(){
+            
+
+            // VIDEO START
             var input = {!! json_encode($materi->video) !!};
 
             function getId(url) {
@@ -137,6 +161,8 @@
             // alert(videoId);
 
             $('#youtube').attr('src', "https://www.youtube.com/embed/"+ videoId);
+
+            // VIDEO END
         });
     </script> 
 @endsection
