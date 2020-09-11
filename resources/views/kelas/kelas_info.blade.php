@@ -53,7 +53,11 @@
                                     <div>
                                         <h6 class="m-b-0 customer text-center" style="color: #ffff">KELAS</h6>
                                         <br>
-                                        <h6 class="m-b-0 customer text-center" style="color: #ffff"><b>{{$kelas->tingkat}}</b></h6>
+                                        @if ($kelas->jenjang == 'UMUM')
+                                            <h6 class="m-b-0 customer text-center" style="color: #ffff"><b>{{$kelas->level}}</b></h6>
+                                        @else
+                                            <h6 class="m-b-0 customer text-center" style="color: #ffff"><b>{{$kelas->tingkat}}</b></h6>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
