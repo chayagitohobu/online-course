@@ -19,7 +19,7 @@
 
     <!-- Blog home 2  -->
     <!-- ============================================================== -->
-    <div class="blog-home2 spacer">
+    <div class="spacer">
         <div class="container">
         <!-- Row  -->
             
@@ -33,30 +33,47 @@
                     <span class="ti-menu"></span>
                 </button>
                
-                <div class="collapse navbar-collapse" id="header1">
+                <div class="collapse navbar-collapse">
                     
                     <div class="container">
                         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                            <li class="nav-item active"><a class="nav-link" href="#">Software Development</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Website Development</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#">Android Development</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="h1-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Machine learning <i class="fa fa-angle-down m-l-5"></i>
+                            
+                            <li class="nav-item dropdown mr-auto">
+                                <a class="nav-link dropdown-toggle text-inverse" href="#" id="h1-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <b> KATEGORI KELAS </b><i class="fa fa-angle-down m-l-5"></i>
                                 </a>
                                 <ul class="b-none dropdown-menu animated fadeInUp">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    @foreach ($kategoris as $kategori)
+                                    <li>
+                                        <a class="dropdown-item" href="{{route('urut_kategori',['kategori_id' => $kategori->id])}}">{{$kategori->kategori}}</a>
+                                        {{-- <a class="dropdown-item" href="/lihatkelas/kategori/{{$kategori->kategori_id}}">{{$kategori->kategori}}</a> --}}
+                                    </li>
+                                    @endforeach
+                                    
+                                    {{-- <li><a class="dropdown-item" href="#">Another action</a></li>
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                     <li class="divider" role="separator"></li>
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                     <li><a class="dropdown-item" href="#">Separated link</a></li>
                                     <li class="divider" role="separator"></li>
-                                    <li><a class="dropdown-item" href="#">One more separated link</a></li>
+                                    <li><a class="dropdown-item" href="#">One more separated link</a></li> --}}
 
                                 </ul>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="#">Artificial intelligence</a></li>
+                            <li class=" col-xl-5 ml-auto">
+                                <form action="/lihatkelas/search" method="GET" class="row">
+                                    {{ csrf_field() }}
+                                    <input type="text" value="{{ old('search') }}" placeholder="Cari..." name="search" class="col-sm-8">
+                                    <span class="input-group-btn d-inline col-sm-4 ">
+                                        <button type="submit" class="btn btn-inverse">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                    
+                                </form>
+                                
+                            </li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -66,7 +83,7 @@
         </div>    
         <!-- ============================================================== -->
         <!-- End Header 1  -->
-            <div class="row m-t-40">
+            <div class=" blog-home2 row m-t-40">
                 @if (empty($kelases))
                 <div class="static-slider3">
                     <div class="container">
@@ -81,7 +98,7 @@
                             <!-- Column -->
                         </div>
                     </div>
-                </div> 
+                </div>
                 @else
                     @foreach ($kelases as $kelas)
                         <div class="col-md-4">
@@ -118,6 +135,15 @@
                             </div>
                         </div>
                     @endforeach
+                    <div class="col-xl-12">
+                        <hr>
+                        <div class="row justify-content-center p-3">
+                            {{-- {{ $kelases->links() }} --}}
+                            {!! $kelases->render() !!}
+                        </div>
+                    </div>
+                    
+
                 @endif
                 
             </div>

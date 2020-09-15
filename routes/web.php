@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+// use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
+use App\Kelas;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,10 +40,8 @@ Route::get('/daftar_kelas', function () {
     return view('kelas');
 });
 
-Route::get('/kelas-info', function () {
-    return view('kelas-info');
-});
-
+Route::get('/lihatkelas/search', 'LihatKelasController@search');
+Route::get('/lihatkelas/kategori/{kategori_id}', 'LihatKelasController@kategori')->name('urut_kategori');
 Route::get('/lihatmateri/{kelas_slug}/{materi_slug}', 'LihatMateriController@tampilmateri')->name('tampilmateri');
 Route::get('/getKota_Kabupaten/{id}', 'UserController@getKota_Kabupaten')->name('getKota_Kabupaten');
 Route::get('/getKecamatan/{id}', 'UserController@getKecamatan')->name('getKecamatan');

@@ -21,7 +21,9 @@ class LihatKelasController extends Controller
      */
     public function index()
     {
-        $kelases = Kelas::All();
+        // $kelases = Kelas::All();
+        $kelases = Kelas::paginate(6);
+        $kategoris = Kategori::All();
         // $user_id = auth()->user()->id;
         // $pesertas = DB::table('kelas')
         //     ->join('peserta', 'kelas.id', 'peserta.kelas_id')
@@ -30,7 +32,36 @@ class LihatKelasController extends Controller
 
         // echo "<pre>";
         // print_r($pesertas);
-        return view('kelas.kelas')->with('kelases', $kelases);
+        return view('kelas.kelas')->with('kelases', $kelases)->with('kategoris', $kategoris);
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $kategoris = Kategori::All();
+
+        if ($search != '' || $search != null) {
+            $kelases = Kelas::where('nama_kelas', 'like', '%' . $search . '%')
+                ->paginate(5)
+                ->setpath('');
+        } else {
+            $kelases = Kelas::paginate(6);
+        }
+        return view('kelas.kelas')->with('kelases', $kelases)->with('kategoris', $kategoris)->withInput($request->flash());
+    }
+
+    public function kategori($kategori_id)
+    {
+        // return 'test';
+
+        $kategoris = Kategori::All();
+
+        if ($kategori_id != '' || $kategori_id != 0 || $kategori_id != null) {
+            $kelases = Kelas::where('kategori_id', $kategori_id)->paginate(5);
+        } else {
+            $kelases = Kelas::paginate(6);
+        }
+        return view('kelas.kelas')->with('kelases', $kelases)->with('kategoris', $kategoris);
     }
 
     /**

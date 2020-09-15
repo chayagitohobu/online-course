@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
 
-
-
 @section('content')
 
     @section('jumbo-title')
@@ -145,11 +143,13 @@
                                                 <br>
                                                 <h2 class="title">Tentang kelas</h2>
                                                 <br>
-                                                {{-- @if (!empty($kategori))
+                                                @if (empty($kategori))
+                                                    <h6 class="subtitle" style="font-size: medium"></h6>
+                                                @else
                                                     <h6 class="subtitle" style="font-size: medium">
                                                         Kategori : {!! $kategori->kategori !!}</h6>
                                                     <br>
-                                                @endif --}}
+                                                @endif
 
                                                 <h6 class="subtitle" style="font-size: medium">
                                                     {!! $kelas->deskripsi !!}</h6>

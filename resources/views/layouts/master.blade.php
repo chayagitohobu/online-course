@@ -35,6 +35,7 @@
                 text-decoration: underline;
             }
         </style>
+    @yield('style')
     
 </head>
 

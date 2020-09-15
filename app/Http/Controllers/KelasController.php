@@ -34,7 +34,7 @@ class KelasController extends Controller
         $kelas = Kelas::where('user_id', $user_id)->first();
 
         if (empty($kelas)) {
-            $kategori = 'kelas tak ade';
+            $kategori = 'kelas belum dibuat';
         } else {
             $kategori = Kategori::where('id', $kelas->kategori_id)->first()->kategori;
         }
