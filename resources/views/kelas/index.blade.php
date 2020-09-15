@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <label for="KATEGORI">KATEGORI</label>
-                                    <input type="text" value="{{ $kategori}}" name="kategori" readonly class="form-control" id="KAPASITAS">
+                                    <input type="text" value="{{ $kategori}}" name="kategori" readonly class="form-control" id="KATEGORI">
                                 </div>
                                 <div class="form-group col-lg-7 text-right p-4">
                                     <a href="materi" class="btn btn-success-gradiant pr-5 pl-5"> MATERI KELAS </a>
