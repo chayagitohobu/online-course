@@ -208,30 +208,38 @@
                 </div>
                 <!-- Row  -->
                 <div class="row testi3 m-t-40">
-
-                    @for ($i = 0; $i < 6; $i++)
-                    <!-- item -->
-                    <div class="col-lg-4 col-md-4" data-aos="fade-right">
-                        <div class="card card-shadow">
-                            <div class="card-body">
-                                <h6 class="font-light m-b-30">“Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras venene veliel vestibulum.”</h6>
-                                <div class="d-flex no-block align-items-center">
-                                    <span class="thumb-img"><img src="images/testimonial/1.jpg" alt="wrapkit" class="circle"/></span>
-                                    <div class="m-l-20">
-                                        <h6 class="m-b-0 customer">Michelle Anderson</h6>
-                                        <div class="font-10">
-                                            <a href="" class="text-success"><i class="fa fa-star"></i></a>
-                                            <a href="" class="text-success"><i class="fa fa-star"></i></a>
-                                            <a href="" class="text-success"><i class="fa fa-star"></i></a>
-                                            <a href="" class="text-success"><i class="fa fa-star"></i></a>
-                                            <a href="" class="text-muted"><i class="fa fa-star"></i></a>
+                    @if ($testimonis == '')
+                        <div class="col-lg-4 col-md-4" data-aos="fade-right">
+                            <div class="card card-shadow">
+                               
+                            </div>
+                        </div>
+                    @else
+                        @foreach ($testimonis as $testimoni)
+                            <!-- item -->
+                            @if ($testimoni->testimoni != '')
+                                <div class="col-lg-4 col-md-4" data-aos="fade-right">
+                                    <div class="card card-shadow">
+                                        <div class="card-body">
+                                            <h6 class="font-light m-b-30" style="overflow: auto; height:30vh">“{{$testimoni->testimoni}}”</h6>
+                                            <div class="d-flex no-block align-items-center">
+                                                <span class="thumb-img"><img src="{{ URL::asset('storage/user') }}/{{$testimoni->foto}}" alt="wrapkit" class="circle"/></span>
+                                                <div class="m-l-20">
+                                                    <h6 class="m-b-0 customer">{{$testimoni->name}}</h6>
+                                                    <div class="font-10">
+                                                        @for ($i = 0; $i < $testimoni->rating; $i++)
+                                                            <a class="text-success"><i class="fa fa-star"></i></a>
+                                                        @endfor
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endfor
+                            @endif
+                            
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>

@@ -108,11 +108,30 @@ class LihatKelasController extends Controller
         $user = User::where('id', $kelas['user_id'])->first(); // User yang membuat kelas
         $user_id = auth()->user();
 
+
+        // $pesertas = Peserta::All();
+        $check_testimoni = Peserta::where('kelas_id', $kelas_id)->get();
+        // $testimonis = Peserta::All();
+
+        if (empty($check_testimoni)) {
+            $testimonis = '';
+        } else {
+            // $testimonis = Peserta::where('kelas_id', $kelas_id)->get();
+
+            $testimonis = DB::table('pesertas')
+                ->join('users', 'users.id', 'pesertas.user_id')
+                ->where('pesertas.kelas_id', '=', $kelas_id)
+                ->get();
+        }
+
+
+
+        // return $testimonis;
+
         if (empty($user_id)) {
-            return view('kelas.kelas_info')->with('kelas', $kelas)->with('materis', $materis)->with('user', $user);
+            return view('kelas.kelas_info')->with('kelas', $kelas)->with('materis', $materis)->with('user', $user)->with('testimonis', $testimonis);
         } else {
             $user_id = auth()->user()->id;
-
             $check_user_adalah_peserta = DB::table('pesertas')
                 ->where('user_id', '=', $user_id)
                 ->where('kelas_id', '=', $kelas_id)
@@ -126,14 +145,14 @@ class LihatKelasController extends Controller
                     ->get();
                 return redirect('lihatmateri/' . $slug . '/' . $materi_pertama['slug']);
             } else {
-                return view('kelas.kelas_info')->with('kelas', $kelas)->with('materis', $materis)->with('user', $user)->with('kategori',  $kategori);
+                return view('kelas.kelas_info')
+                    ->with('kelas', $kelas)
+                    ->with('materis', $materis)
+                    ->with('user', $user)
+                    ->with('kategori',  $kategori)
+                    ->with('testimonis', $testimonis)->with('testimonis', $testimonis);
             }
         }
-
-
-
-        // return $masuk;
-
     }
 
     /**
