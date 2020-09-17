@@ -82,6 +82,13 @@
                                         </div>
                                         <p class="m-b-0 font-14 ">{{$kelas->pekerjaan}}</p>
                                     </div>
+                                    <div class="round-social light text-center mb-5" style="transform: scale(0.8)">
+                                        <a href="{{Auth::user()->facebook}}"><i class="fa fa-facebook"></i></a>
+                                        <a href="{{Auth::user()->twitter}}"><i class="fa fa-twitter"></i></a>
+                                        <a href="{{Auth::user()->linkedin}}"><i class="fa fa-linkedin"></i></a>
+                                        <a href="{{Auth::user()->youtube}}"><i class="fa fa-youtube-play"></i></a>
+                                        <a href="{{Auth::user()->instagram}}"><i class="fa fa-instagram"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

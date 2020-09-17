@@ -29,11 +29,16 @@
                                 <hr>
                                 <div>
                                     <div class="round-social light text-center" style="transform: scale(0.8)">
-                                        <a href="//www.facebook.com/{{Auth::user()->facebook}}"><i class="fa fa-facebook"></i></a>
+                                        {{-- <a href="//www.facebook.com/{{Auth::user()->facebook}}"><i class="fa fa-facebook"></i></a>
                                         <a href="//www.twitter.com/{{Auth::user()->twitter}}"><i class="fa fa-twitter"></i></a>
                                         <a href="//www.linkedin.com/{{Auth::user()->linkedin}}"><i class="fa fa-linkedin"></i></a>
                                         <a href="//www.youtube.com/{{Auth::user()->youtube}}"><i class="fa fa-youtube-play"></i></a>
-                                        <a href="//www.instagram.com/{{Auth::user()->instagram}}"><i class="fa fa-instagram"></i></a>
+                                        <a href="//www.instagram.com/{{Auth::user()->instagram}}"><i class="fa fa-instagram"></i></a> --}}
+                                        <a href="{{Auth::user()->facebook}}"><i class="fa fa-facebook"></i></a>
+                                        <a href="{{Auth::user()->twitter}}"><i class="fa fa-twitter"></i></a>
+                                        <a href="{{Auth::user()->linkedin}}"><i class="fa fa-linkedin"></i></a>
+                                        <a href="{{Auth::user()->youtube}}"><i class="fa fa-youtube-play"></i></a>
+                                        <a href="{{Auth::user()->instagram}}"><i class="fa fa-instagram"></i></a>
                                     </div>
                                 </div>
                             </div>

@@ -60,9 +60,6 @@ class LihatMateriController extends Controller
             ->where('id', $kelas_id)
             ->first();
 
-
-
-
         // MEMBUAT DATA SUDAH BACA BARU //
         // JIKA MATERI
         if (!empty($materi->id)) {
@@ -131,9 +128,6 @@ class LihatMateriController extends Controller
                 ->first()->slug;
         }
 
-        // echo "<pre>";
-        // print_r($materis);
-        // print_r($kelas);
         return view('materi.baca_materi')
             ->with('materis', $materis)
             ->with('kelas', $kelas)
