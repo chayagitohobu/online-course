@@ -108,10 +108,22 @@ class LihatMateriController extends Controller
 
         if ($urutan >= 2) {
 
-            $materi_sebelumnya = DB::table('materis')
+            $check_materi_sebelumnya = DB::table('materis')
                 ->where('materis.urutan', $urutan - 1)
                 ->where('materis.kelas_id', $kelas_id)
-                ->first()->slug;
+                ->first();
+
+            if (empty($check_materi_sebelumnya)) {
+                $materi_sebelumnya = DB::table('materis')
+                    ->where('materis.urutan', $urutan)
+                    ->where('materis.kelas_id', $kelas_id)
+                    ->first()->slug;
+            } else {
+                $materi_sebelumnya = DB::table('materis')
+                    ->where('materis.urutan', $urutan - 1)
+                    ->where('materis.kelas_id', $kelas_id)
+                    ->first()->slug;
+            }
         } else {
             $materi_sebelumnya = DB::table('materis')
                 ->where('materis.urutan', $urutan)
