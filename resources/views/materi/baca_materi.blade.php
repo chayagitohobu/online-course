@@ -72,8 +72,12 @@
                 <div class="col-xl-2 p-5 card card-shadow text-bold text-left mr-2" style="overflow-y: scroll;">
                     <h4 class="mb-5"> <b> DAFTAR MATERI </b> <hr></h4>
                     @foreach ($daftarmateri as $materi_item)
-                    <a href="{{route('tampilmateri',['kelas_slug' => $kelas->slug, 'materi_slug' => $materi_item->slug])}}"><h6 style="font-size: smaller;">{{$materi_item->urutan}}) {{$materi_item->judul}} <hr></h6></a>
-                    <hr>
+                        <a href="{{route('tampilmateri',['kelas_slug' => $kelas->slug, 'materi_slug' => $materi_item->slug])}}"><h6 style="font-size: smaller;">{{$materi_item->urutan}}) {{$materi_item->judul}} 
+                            <br> <hr>
+                            {{$materi_item->durasi}}
+                            <hr></h6></a>
+                        
+                        <hr>
                     @endforeach
                 </div>
                 <div class="col-xl-9 pr-5 pl-5 text-left bg-light p-5 text-center">

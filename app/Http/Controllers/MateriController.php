@@ -7,6 +7,9 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
 use App\Materi;
 use App\User;
 use App\Kelas;
+use Alaouy\Youtube\Facades\Youtube;
+use DateInterval;
+
 
 class MateriController extends Controller
 {
@@ -70,6 +73,31 @@ class MateriController extends Controller
         } else {
             $fileNameToStore = 'default.png';
         }
+
+        // AMBIL YOUTUBE ID DARI URL YOUTUBE
+
+        $url = $request->input('video');
+        parse_str(parse_url($url, PHP_URL_QUERY), $my_array_of_vars);
+        $youtubeid = $my_array_of_vars['v'];
+
+        // AMBIL DURASI DARI YOUTUBE
+        $video = Youtube::getVideoInfo($youtubeid);
+        $durasi = $video->contentDetails->duration;
+
+        // KONVERSI DURASI VIDEO KE DETIK
+        $di = new DateInterval($durasi);
+        $totalSec = 0;
+        if ($di->h > 0) {
+            $totalSec += $di->h * 3600;
+        }
+        if ($di->i > 0) {
+            $totalSec += $di->i * 60;
+        }
+        $totalSec += $di->s;
+
+        // KONVERSI DURASI VIDEO KE FORMAT TIME
+        $hoursminsandsecs = date('H:i:s', $totalSec);
+
         $user_id = auth()->user()->id;
         $kelas = Kelas::where('user_id', $user_id)->first();
 
@@ -82,6 +110,7 @@ class MateriController extends Controller
         $materi->file = $request->input('file');
         $materi->urutan = $request->input('urutan');
         $materi->foto = $fileNameToStore;
+        $materi->durasi = $hoursminsandsecs;
         $materi->slug = SlugService::createSlug(Materi::class, 'slug', $request->input('judul'));
         $materi->save();
         return redirect('/materi')->with('success', 'materi telah di buat');
@@ -139,6 +168,30 @@ class MateriController extends Controller
             $fileNameToStore = 'default.png';
         }
 
+        // AMBIL YOUTUBE ID DARI URL YOUTUBE
+
+        $url = $request->input('video');
+        parse_str(parse_url($url, PHP_URL_QUERY), $my_array_of_vars);
+        $youtubeid = $my_array_of_vars['v'];
+
+        // AMBIL DURASI DARI YOUTUBE
+        $video = Youtube::getVideoInfo($youtubeid);
+        $durasi = $video->contentDetails->duration;
+
+        // KONVERSI DURASI VIDEO KE DETIK
+        $di = new DateInterval($durasi);
+        $totalSec = 0;
+        if ($di->h > 0) {
+            $totalSec += $di->h * 3600;
+        }
+        if ($di->i > 0) {
+            $totalSec += $di->i * 60;
+        }
+        $totalSec += $di->s;
+
+        // KONVERSI DURASI VIDEO KE FORMAT TIME
+        $hoursminsandsecs = date('H:i:s', $totalSec);
+
         $materi = Materi::find($id);
         $materi->judul = $request->input('judul');
         $materi->deskripsi = $request->input('deskripsi');
@@ -146,6 +199,7 @@ class MateriController extends Controller
         $materi->file = $request->input('file');
         $materi->urutan = $request->input('urutan');
         $materi->foto = $fileNameToStore;
+        $materi->durasi = $hoursminsandsecs;
         $materi->slug = SlugService::createSlug(Materi::class, 'slug', $request->input('judul'));
         $materi->save();
         return redirect('/materi')->with('success', 'materi telah di edit');

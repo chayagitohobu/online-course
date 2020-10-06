@@ -95,11 +95,17 @@
                         @guest
                         <a href="{{ route('login') }}"><button class="btn btn-success"> GABUNG KELAS </button></a>
                         @else
-                            {!! Form::open(['action'=>'LihatKelasController@store', 'method' => 'POST']) !!}
-                                <input type="hidden" value="{{$kelas->id}}" name="kelas_id">
-                                <button type="submit" class="btn btn-success"> GABUNG KELAS </button>
-                                {{-- <a type="submit" class="btn btn-success-gradiant btn-md btn-arrow m-t-20 text-white"><span>Ikuti kelas <i class="ti-arrow-right"></i></span></a> --}}
-                            {!! Form::close() !!}
+                            @if ($kelas->harga == 0 || $kelas->harga == null)
+                                {!! Form::open(['action'=>'LihatKelasController@store', 'method' => 'POST']) !!}
+                                    <input type="hidden" value="{{$kelas->id}}" name="kelas_id">
+                                    <button type="submit" class="btn btn-success"> GABUNG KELAS </button>
+                                    {{-- <a type="submit" class="btn btn-success-gradiant btn-md btn-arrow m-t-20 text-white"><span>Ikuti kelas <i class="ti-arrow-right"></i></span></a> --}}
+                                {!! Form::close() !!}
+                            @else
+                                <a href="{{route('checkout',['kelas_slug' => $kelas->slug])}}">
+                                    <button type="submit" class="btn btn-success"> GABUNG KELAS </button>
+                                </a>
+                            @endif
                         @endguest
                         
                     </div>
@@ -161,7 +167,22 @@
                                         <h6 class="subtitle" style="font-size: medium">Materi kelas yang akan kita pelajari bersama</h6>
                                         <br>
                                         @foreach ($materis as $materi)
-                                            <a type="button" class="disabled text-left btn btn-block waves-effect waves-light btn-outline-secondary"> <i class="ti-lock"></i> | &nbsp;&nbsp;{{$materi->judul}}</a>
+                                            
+                                            <a href="/materi/{{ $materi->id }}" data-toggle="tooltip" data-placement="top" title="{{ $materi->judul }}" type="button" class="disabled text-left btn btn-block waves-effect waves-light btn-outline-secondary"> 
+                                                <div class="row" style="font-size: 0.9em">
+                                                    <div class="col-sm-1 text-center">
+                                                        <i class="ti-lock"></i> |
+                                                    </div>
+                                                    <div class="col-sm-8 text-left">
+                                                        {{-- {{ $materi->judul }} --}}
+                                                        {{ Str::limit($materi->judul, 40) }}
+                                                    </div>
+                                                    <div class="col-sm-1 text-left">
+                                                        |  {{ $materi->durasi }}
+                                                    </div>
+                                                </div>
+                                            </a>
+
                                         @endforeach
                                             <a type="button" class="text-center btn btn-block waves-effect waves-light btn btn-success-gradiant text-white"> <i class="ti-arrow-down"></i></a>                     
                                         

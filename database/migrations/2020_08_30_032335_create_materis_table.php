@@ -21,6 +21,7 @@ class CreateMaterisTable extends Migration
             $table->string('video')->nullable();
             $table->string('file')->nullable();
             $table->integer('urutan')->nullable();
+            $table->time('durasi')->nullable();
             $table->enum('status', ['yes', 'no'])->nullable();
             $table->timestamps();
         });

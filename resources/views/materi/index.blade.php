@@ -38,16 +38,17 @@
                         <a type="button" href="/materi/create" class="text-center mt-2 mb-2 btn btn-block text-white btn-success-gradiant"> TAMBAH MATERI <i class="ti-arrow-down"></i></a>
                         
                         @foreach ($materis as $materi)
-                            <a href="/materi/{{ $materi->id }}" type="button" class="text-left mt-2 mb-2 btn btn-block text-white btn-inverse"> 
-                                <div class="row">
-                                    <div class="col-xl-1 text-center">
-                                        {{ $materi->urutan }}
+                            <a href="/materi/{{ $materi->id }}" data-toggle="tooltip" data-placement="top" title="{{ $materi->judul }}" type="button" class="text-left mt-2 mb-2 btn btn-block text-white btn-inverse"> 
+                                <div class="row" style="font-size: 0.9em">
+                                    <div class="col-sm-1 text-center">
+                                        {{ $materi->urutan }} |
                                     </div>
-                                    <div class="col-xl-1">
-                                        |
+                                    <div class="col-sm-8 text-left">
+                                        {{-- {{ $materi->judul }} --}}
+                                        {{ Str::limit($materi->judul, 40) }}
                                     </div>
-                                    <div class="col-xl-10 text-left">
-                                        {{ $materi->judul }}
+                                    <div class="col-sm-1 text-left">
+                                        |  {{ $materi->durasi }}
                                     </div>
                                 </div>
                             </a>
