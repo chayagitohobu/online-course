@@ -36,7 +36,12 @@ class KelasController extends Controller
         if (empty($kelas)) {
             $kategori = 'kelas belum dibuat';
         } else {
-            $kategori = Kategori::where('id', $kelas->kategori_id)->first()->kategori;
+
+            if (empty(Kategori::where('id', $kelas->kategori_id)->first())) {
+                $kategori = " - ";
+            } else {
+                $kategori = Kategori::where('id', $kelas->kategori_id)->first()->kategori;
+            }
         }
         return view('kelas.index')->with('kelas', $user->kelas)->with('kategori', $kategori);
     }

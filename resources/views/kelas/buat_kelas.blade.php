@@ -64,7 +64,7 @@
                                 <div class="form-group col-lg-4">
                                     <label for="jenjang">JENJANG</label>
                                     <select class="form-control" value="SD" name="jenjang" id="jenjang">
-                                        <option selected='false'>Pilih.. </option>
+                                        <option value="" selected disabled hidden>PILIH</option>
                                         <option>SD</option>
                                         <option>SMP</option>
                                         <option>SMA</option>

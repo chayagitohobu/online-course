@@ -64,10 +64,11 @@
                                 <div class="form-group col-lg-4">
                                     <label for="jenjang">JENJANG</label>
                                     <select class="form-control" value="{{$kelas->jenjang}}" name="jenjang" id="jenjang">
-                                        <option>UMUM</option>
+                                        <option value="" selected disabled hidden>PILIH</option>
                                         <option>SD</option>
                                         <option>SMP</option>
                                         <option>SMA</option>
+                                        <option>UMUM</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-lg-4">
@@ -212,7 +213,7 @@
 
             jQuery('select[name= "jenjang"]').on('change', function(){
                 var jenjang = jQuery(this).val();
-                
+
                 if(jenjang == 'UMUM'){
                     $('select[name = "tingkat"]').empty();
                     $('select[name = "tingkat"]').hide();
