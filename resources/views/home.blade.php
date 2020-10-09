@@ -1,7 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-
+    @include('inc.messages')
+        
     @section('jumbo-title')
     <h1 class="title">BERANDA</h1>
     @endsection 

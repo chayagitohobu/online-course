@@ -40,11 +40,8 @@ class CreateUsersTable extends Migration
             $table->string('kode_affilasi');
             $table->string('alamat');
             $table->enum('status', ['yes', 'no']);
-            // id_provinsi
-            // id_kabupaten/kota
-            // id_kecamatan
-            // id_kelurahan
-            // lastlogin
+            $table->boolean('is_admin')->nullable();
+            $table->boolean('is_reviewer')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

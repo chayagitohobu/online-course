@@ -57,3 +57,5 @@ Route::resource('/materi', 'MateriController');
 Route::resource('/peserta', 'PesertaController');
 Route::resource('/lihatkelas', 'LihatKelasController');
 Route::resource('/lihatmateri', 'LihatMateriController');
+Route::resource('/admin', 'AdminController');
+Route::resource('/reviewer', 'ReviewerController');

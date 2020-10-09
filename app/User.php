@@ -23,7 +23,7 @@ class User extends Authenticatable
         'twitter', 'instagram', 'youtube',
         'linkedin', 'guru', 'murid',
         'nik', 'npwp', 'kode_promosi',
-        'kode_affilasi', 'alamat', 'status'
+        'kode_affilasi', 'alamat', 'status', 'is_admin', 'is_reviewer'
     ];
 
     /**
